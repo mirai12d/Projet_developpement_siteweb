@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Accueil.css';
 
 const Accueil = () => {
@@ -7,12 +8,12 @@ const Accueil = () => {
       <div className="accueil-content">
         <h1>Votre site web professionnel, rapide et sur mesure</h1>
         <p>
-          StudioVirtuo vous accompagne dans la création de sites modernes,
+          Koodi vous accompagne dans la création de sites modernes,
           performants et adaptés aux petites entreprises.
         </p>
         <div className="accueil-buttons">
-          <a href="#services" className="btn-principal">Voir nos services</a>
-          <a href="#contact" className="btn-secondaire">Nous contacter</a>
+          <Link to="/services" className="btn-principal">Voir nos services</Link>
+          <Link to="/contact" className="btn-secondaire">Nous contacter</Link>
         </div>
       </div>
     </section>

@@ -4,7 +4,7 @@ import './Footer.css';
 const Footer = () => {
   return (
     <footer className="footer">
-      <p>© {new Date().getFullYear()} StudioVirtuo — Tous droits réservés.</p>
+      <p>© {new Date().getFullYear()} Koodi — Tous droits réservés.</p>
       <div className="footer-links">
         <a href="#home">Accueil</a>
         <a href="#services">Services</a>

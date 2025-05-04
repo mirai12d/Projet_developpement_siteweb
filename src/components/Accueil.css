@@ -56,3 +56,28 @@
     color: white;
   }
   
+  @media (max-width: 768px) {
+    .accueil-content h1 {
+      font-size: 6vw;
+      text-align: center;
+    }
+  
+    .accueil-content p {
+      font-size: 4vw;
+      padding: 0 10px;
+    }
+  
+    .accueil-buttons {
+      flex-direction: column;
+      gap: 15px;
+      align-items: center;
+    }
+  
+    .btn-principal,
+    .btn-secondaire {
+      width: 90%;
+      font-size: 18px;
+      padding: 10px;
+    }
+  }
+  

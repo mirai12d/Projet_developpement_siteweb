@@ -5,7 +5,7 @@ const About = () => {
   return (
     <section className="about" id="about">
       <div className="about-content">
-        <h2>À propos de StudioVirtuo</h2>
+        <h2>À propos de Koodi</h2>
         <p>
           Nous sommes deux développeurs passionnés, basés à Montréal. Grâce à notre expérience en React, Symfony, SQL et design web,
           nous proposons des solutions professionnelles accessibles aux petites entreprises et entrepreneurs.
@@ -18,12 +18,12 @@ const About = () => {
         <div className="team-member">
           <img src="https://via.placeholder.com/150" alt="Adam" />
           <h4>Adam Boulisfane</h4>
-          <p>Développeur full stack & fondateur</p>
+          <p>Designer, développeur front-end & fondateur</p>
         </div>
         <div className="team-member">
-          <img src="https://via.placeholder.com/150" alt="Partenaire" />
+          <img src="https://via.placeholder.com/150" alt="Ayoub" />
           <h4>Ayoub Oubalkass</h4>
-          <p>Designer & développeur front-end</p>
+          <p>Designer, développeur front-end & fondateur</p>
         </div>
       </div>
     </section>
