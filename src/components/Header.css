@@ -42,17 +42,23 @@
     color: #00bfa6;
   }
   @media (max-width: 768px) {
-    .header-container {
-      flex-direction: column;
-      align-items: flex-start;
+    .burger {
+      display: block;
+      align-self: flex-end;
+      margin-top: 10px;
     }
   
     .nav-links {
+      display: none;
       flex-direction: column;
       width: 100%;
       padding-left: 0;
       margin-top: 10px;
       gap: 10px;
+    }
+  
+    nav.nav-open .nav-links {
+      display: flex;
     }
   
     .nav-links li {
@@ -66,5 +72,19 @@
       border-bottom: 1px solid #eee;
       width: 100%;
     }
+  }
+  
+  .burger {
+    display: none;
+    font-size: 28px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #1b7f79;
+  }
+  
+  /* Pour le menu ouvert */
+  .nav-open {
+    display: block !important;
   }
   

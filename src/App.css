@@ -11,3 +11,35 @@ body {
 .App {
   text-align: center;
 }
+/* Boutons généraux */
+button,
+.btn-tarif,
+.btn-principal,
+.btn-secondaire {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+button:hover,
+.btn-tarif:hover,
+.btn-principal:hover,
+.btn-secondaire:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Cartes de forfaits */
+.forfait-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.forfait-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Lien actif dans le menu */
+.nav-links a.active {
+  border-bottom: 2px solid #00bfa6;
+  color: #00bfa6;
+}

@@ -7,20 +7,32 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
+  const [success, setSuccess] = useState(false);
 
-  const { login } = useContext(AuthContext); // ✅
-  const navigate = useNavigate(); // ✅
+  const { login } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
+
+    if (!email || !password) {
+      setMessage("Veuillez remplir tous les champs.");
+      setSuccess(false);
+      return;
+    }
 
     const savedEmail = localStorage.getItem('userEmail');
     const savedPassword = localStorage.getItem('userPassword');
 
     if (email === savedEmail && password === savedPassword) {
-      login(); // ✅ active la session
-      navigate('/'); // ✅ redirection vers accueil
+      login();
+      setSuccess(true);
+      setMessage("Connexion réussie !");
+      setTimeout(() => {
+        navigate('/');
+      }, 1000); // redirection après 1s
     } else {
+      setSuccess(false);
       setMessage("Email ou mot de passe incorrect.");
     }
   };
@@ -45,7 +57,17 @@ const Login = () => {
         />
         <button type="submit">Se connecter</button>
       </form>
-      {message && <p className="message">{message}</p>}
+
+      {message && (
+        <p className={`message ${success ? 'success' : 'error'}`}>{message}</p>
+      )}
+
+      <p className="switch-auth">
+        Pas encore de compte ?{' '}
+        <span className="link" onClick={() => navigate('/signup')}>
+          Inscrivez-vous
+        </span>
+      </p>
     </div>
   );
 };

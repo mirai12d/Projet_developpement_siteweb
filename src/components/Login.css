@@ -47,4 +47,29 @@
     font-size: 14px;
     color: #555;
   }
+  .message {
+    margin-top: 15px;
+    font-size: 15px;
+    text-align: center;
+  }
+  
+  .message.success {
+    color: green;
+  }
+  
+  .message.error {
+    color: red;
+  }
+  
+  .switch-auth {
+    margin-top: 20px;
+    font-size: 15px;
+    text-align: center;
+  }
+  
+  .switch-auth .link {
+    color: #1b7f79;
+    font-weight: 600;
+    cursor: pointer;
+  }
   
