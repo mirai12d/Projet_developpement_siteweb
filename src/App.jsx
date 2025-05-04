@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ScrollToTop from './components/ScrollToTop';
-import Tarifs from './components/Tarifs';
-import Accueil from './components/Accueil';
+import Tarifs from "./components/Tarifs";
+import Accueil from "./components/Accueil";
 import Services from './components/Services';
 import Projects from './components/Projects';
 import About from './components/About';
@@ -11,6 +11,8 @@ import Footer from './components/Footer';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import Commande from './components/Commande';
+
+
 
 function App() {
   return (

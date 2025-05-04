@@ -38,6 +38,9 @@ const Signup = () => {
       // tu pourrais ici stocker des données temporairement :
       localStorage.setItem('userEmail', formData.email);
       localStorage.setItem('userPassword', formData.motDePasse);
+      localStorage.setItem('userPrenom', formData.prenom);
+      localStorage.setItem('userNom', formData.nom);
+
       navigate('/login'); // redirection après inscription
     }
   };
