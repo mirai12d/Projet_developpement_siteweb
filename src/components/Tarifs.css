@@ -1,0 +1,111 @@
+.tarifs-container {
+    padding: 60px 20px;
+    background-color: #f7f7fb;
+    text-align: center;
+  }
+  
+  .tarifs-title {
+    font-size: 32px;
+    color: #1b7f79;
+    margin-bottom: 40px;
+  }
+  
+  .forfaits-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+  }
+  
+  .forfait-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    width: 280px;
+    padding: 30px 20px;
+    transition: transform 0.3s ease;
+    text-align: left;
+    position: relative;
+  }
+  
+  .forfait-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .forfait-card h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: #1b7f79;
+  }
+  
+  .forfait-card .prix {
+    font-size: 26px;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #333;
+  }
+  
+  .forfait-card .description {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
+    min-height: 50px;
+  }
+  
+  .forfait-card ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+  }
+  
+  .forfait-card li {
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #444;
+  }
+  
+  .btn-tarif {
+    background-color: #1b7f79;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    width: 100%;
+    transition: background 0.3s ease;
+  }
+  
+  .btn-tarif:hover {
+    background-color: #14665f;
+  }
+  
+  /* Couleurs spécifiques par forfait */
+  .forfait-essor {
+    border-top: 5px solid #ccc;
+  }
+  
+  .forfait-elan {
+    border-top: 5px solid #5bc0be;
+  }
+  
+  .forfait-propulsion {
+    border-top: 5px solid #f9a826;
+  }
+  
+  .forfait-ascension {
+    border-top: 5px solid #d7263d;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .forfaits-grid {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .forfait-card {
+      width: 90%;
+    }
+  }
+  

@@ -8,12 +8,13 @@ const Footer = () => {
       <p>© {new Date().getFullYear()} Koodi — Tous droits réservés.</p>
 
       <div className="footer-links">
-        <Link to="/">Accueil</Link>
-        <Link to="/services">Services</Link>
-        <Link to="/projects">Projets</Link>
-        <Link to="/about">À propos</Link>
-        <Link to="/contact">Contact</Link>
-      </div>
+  <Link to="/">Accueil</Link>
+  <Link to="/services">Services</Link>
+  <Link to="/projects">Projets</Link>
+  <Link to="/tarifs">Tarifs</Link>
+  <Link to="/about">À propos</Link>
+  <Link to="/contact">Contact</Link>
+</div>
 
       <div className="footer-socials">
         <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
