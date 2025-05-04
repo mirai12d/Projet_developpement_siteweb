@@ -1,10 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import './Login.css';
+import { AuthContext } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
+
+  const { login } = useContext(AuthContext); // ✅
+  const navigate = useNavigate(); // ✅
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -13,7 +18,8 @@ const Login = () => {
     const savedPassword = localStorage.getItem('userPassword');
 
     if (email === savedEmail && password === savedPassword) {
-      setMessage("Connexion réussie !");
+      login(); // ✅ active la session
+      navigate('/'); // ✅ redirection vers accueil
     } else {
       setMessage("Email ou mot de passe incorrect.");
     }
@@ -28,12 +34,14 @@ const Login = () => {
           placeholder="Adresse email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          required
         />
         <input
           type="password"
           placeholder="Mot de passe"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          required
         />
         <button type="submit">Se connecter</button>
       </form>

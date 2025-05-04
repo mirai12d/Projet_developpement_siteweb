@@ -1,7 +1,13 @@
 import React from 'react';
-import './Tarifs.css'; // Assure-toi de créer un fichier CSS associé si tu veux le styliser
+import './Tarifs.css';
+import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from '../context/AuthContext';
 
 const Tarifs = () => {
+  const navigate = useNavigate();
+  const { isAuthenticated } = useContext(AuthContext);
+
   const forfaits = [
     {
       nom: 'Essor',
@@ -55,6 +61,14 @@ const Tarifs = () => {
     },
   ];
 
+  const handleChoisir = (forfait) => {
+    if (!isAuthenticated) {
+      navigate('/signup');
+    } else {
+      navigate('/commande', { state: { forfait } });
+    }
+  };
+
   return (
     <div className="tarifs-container">
       <h2 className="tarifs-title">Nos Forfaits</h2>
@@ -69,7 +83,12 @@ const Tarifs = () => {
                 <li key={i}>✓ {pt}</li>
               ))}
             </ul>
-            <button className="btn-tarif">Choisir</button>
+            <button
+              className="btn-tarif"
+              onClick={() => handleChoisir(forfait)}
+            >
+              Choisir
+            </button>
           </div>
         ))}
       </div>

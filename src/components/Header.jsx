@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './Header.css';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
 
 function Header() {
+  const { isAuthenticated, logout } = useContext(AuthContext);
+
   return (
     <header className="site-header">
       <div className="header-container">
@@ -17,9 +20,19 @@ function Header() {
             <li><Link to="/tarifs" className="nav-item">Tarifs</Link></li>
             <li><Link to="/about" className="nav-item">À propos</Link></li>
             <li><Link to="/contact" className="nav-item">Contact</Link></li>
-            <li><Link to="/login" className="nav-item">Connexion</Link></li>
-            <li><Link to="/signup" className="nav-item">Inscription</Link></li>
 
+            {!isAuthenticated ? (
+              <>
+                <li><Link to="/login" className="nav-item">Connexion</Link></li>
+                <li><Link to="/signup" className="nav-item">Inscription</Link></li>
+              </>
+            ) : (
+              <li>
+                <button onClick={logout} className="nav-item" style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#1b7f79' }}>
+                  Déconnexion
+                </button>
+              </li>
+            )}
           </ul>
         </nav>
       </div>
