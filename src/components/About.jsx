@@ -5,7 +5,7 @@ const About = () => {
   return (
     <section className="about" id="about">
       <div className="about-content">
-        <h2>À propos de Koodi</h2>
+        <h2>À propos de Ovrkode</h2>
         <p>
           Nous sommes deux développeurs passionnés, basés à Montréal. Grâce à notre expérience en React, Symfony, SQL et design web,
           nous proposons des solutions professionnelles accessibles aux petites entreprises et entrepreneurs.

@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import './Signup.css';
 import { useNavigate } from 'react-router-dom';
+import { register } from '../api/api'; // <-- Import API
 
 const Signup = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
+    username: '',
     nom: '',
     prenom: '',
     email: '',
@@ -14,9 +16,12 @@ const Signup = () => {
   });
 
   const [errors, setErrors] = useState({});
+  const [message, setMessage] = useState('');
+  const [success, setSuccess] = useState(false);
 
   const validate = () => {
     const newErrors = {};
+    if (!formData.username.trim()) newErrors.username = 'Nom d’utilisateur requis';
     if (!formData.nom.trim()) newErrors.nom = 'Nom requis';
     if (!formData.prenom.trim()) newErrors.prenom = 'Prénom requis';
     if (!formData.email.includes('@')) newErrors.email = 'Email invalide';
@@ -25,23 +30,40 @@ const Signup = () => {
   };
 
   const handleChange = (e) => {
-    setFormData({...formData, [e.target.name]: e.target.value});
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const validationErrors = validate();
     setErrors(validationErrors);
+    setMessage('');
 
     if (Object.keys(validationErrors).length === 0) {
-      console.log('Inscription réussie :', formData);
-      // tu pourrais ici stocker des données temporairement :
-      localStorage.setItem('userEmail', formData.email);
-      localStorage.setItem('userPassword', formData.motDePasse);
-      localStorage.setItem('userPrenom', formData.prenom);
-      localStorage.setItem('userNom', formData.nom);
+      try {
+        const result = await register({
+          username: formData.username,
+          nom: formData.nom,
+          prenom: formData.prenom,
+          email: formData.email,
+          password: formData.motDePasse,
+          telephone: formData.telephone,
+          entreprise: formData.entreprise
+        });
 
-      navigate('/login'); // redirection après inscription
+        if (result && result.id) {
+          setSuccess(true);
+          setMessage('Inscription réussie !');
+          setTimeout(() => navigate('/login'), 1000);
+        } else {
+          setSuccess(false);
+          setMessage(result.message || 'Erreur lors de l’inscription.');
+        }
+      } catch (error) {
+        console.error(error);
+        setSuccess(false);
+        setMessage('Erreur serveur. Veuillez réessayer plus tard.');
+      }
     }
   };
 
@@ -49,58 +71,36 @@ const Signup = () => {
     <div className="auth-container">
       <h2>Inscription</h2>
       <form onSubmit={handleSubmit} noValidate>
-        <input
-          type="text"
-          name="nom"
-          placeholder="Nom"
-          onChange={handleChange}
-        />
+        <input type="text" name="username" placeholder="Nom d'utilisateur" onChange={handleChange} />
+        {errors.username && <p className="error">{errors.username}</p>}
+
+        <input type="text" name="nom" placeholder="Nom" onChange={handleChange} />
         {errors.nom && <p className="error">{errors.nom}</p>}
 
-        <input
-          type="text"
-          name="prenom"
-          placeholder="Prénom"
-          onChange={handleChange}
-        />
+        <input type="text" name="prenom" placeholder="Prénom" onChange={handleChange} />
         {errors.prenom && <p className="error">{errors.prenom}</p>}
 
-        <input
-          type="email"
-          name="email"
-          placeholder="Adresse email"
-          onChange={handleChange}
-        />
+        <input type="email" name="email" placeholder="Adresse email" onChange={handleChange} />
         {errors.email && <p className="error">{errors.email}</p>}
 
-        <input
-          type="password"
-          name="motDePasse"
-          placeholder="Mot de passe"
-          onChange={handleChange}
-        />
+        <input type="password" name="motDePasse" placeholder="Mot de passe" onChange={handleChange} />
         {errors.motDePasse && <p className="error">{errors.motDePasse}</p>}
 
-        <input
-          type="tel"
-          name="telephone"
-          placeholder="Téléphone"
-          onChange={handleChange}
-        />
-
-        <input
-          type="text"
-          name="entreprise"
-          placeholder="Nom de l'entreprise (facultatif)"
-          onChange={handleChange}
-        />
+        <input type="tel" name="telephone" placeholder="Téléphone" onChange={handleChange} />
+        <input type="text" name="entreprise" placeholder="Entreprise (facultatif)" onChange={handleChange} />
 
         <button type="submit">Créer un compte</button>
       </form>
 
+      {message && (
+        <p className={`message ${success ? 'success' : 'error'}`}>{message}</p>
+      )}
+
       <p className="switch-auth">
         Vous avez déjà un compte ?{' '}
-        <span className="link" onClick={() => navigate('/login')}>Connectez-vous</span>
+        <span className="link" onClick={() => navigate('/login')}>
+          Connectez-vous
+        </span>
       </p>
     </div>
   );

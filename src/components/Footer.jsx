@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const Footer = () => {
   return (
     <footer className="footer">
-      <p>© {new Date().getFullYear()} Koodi — Tous droits réservés.</p>
+      <p>© {new Date().getFullYear()} Ovrkode — Tous droits réservés.</p>
 
       <div className="footer-links">
   <Link to="/">Accueil</Link>

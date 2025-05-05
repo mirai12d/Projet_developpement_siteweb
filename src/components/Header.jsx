@@ -19,7 +19,7 @@ function Header() {
     <header className="site-header">
       <div className="header-container">
         <div className="logo">
-          <NavLink to="/" className="logo-link">Koodi</NavLink>
+          <NavLink to="/" className="logo-link">Ovrkode</NavLink>
         </div>
 
         <button className="burger" onClick={toggleMenu}>

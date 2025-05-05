@@ -2,9 +2,10 @@ import React, { useState, useContext } from 'react';
 import './Login.css';
 import { AuthContext } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import { login as loginApi } from '../api/api'; // ⬅️ Import API
 
 const Login = () => {
-  const [email, setEmail] = useState('');
+  const [identifiant, setIdentifiant] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
   const [success, setSuccess] = useState(false);
@@ -12,28 +13,39 @@ const Login = () => {
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
 
-    if (!email || !password) {
+    if (!identifiant || !password) {
       setMessage("Veuillez remplir tous les champs.");
       setSuccess(false);
       return;
     }
 
-    const savedEmail = localStorage.getItem('userEmail');
-    const savedPassword = localStorage.getItem('userPassword');
+    try {
+      const result = await loginApi({ identifiant, password });
 
-    if (email === savedEmail && password === savedPassword) {
-      login();
-      setSuccess(true);
-      setMessage("Connexion réussie !");
-      setTimeout(() => {
-        navigate('/');
-      }, 1000); // redirection après 1s
-    } else {
+      if (result.token) {
+        localStorage.setItem('token', result.token);
+        localStorage.setItem('userPrenom', result.user.prenom);
+        localStorage.setItem('userNom', result.user.nom);
+        localStorage.setItem('userEmail', result.user.email);
+
+        login();
+        setSuccess(true);
+        setMessage("Connexion réussie !");
+        setTimeout(() => {
+          navigate('/');
+          window.location.reload(); // force le header à se recharger et fermer le menu
+        }, 1000);
+      } else {
+        setSuccess(false);
+        setMessage(result.message || "Identifiants incorrects.");
+      }
+    } catch (error) {
+      console.error(error);
       setSuccess(false);
-      setMessage("Email ou mot de passe incorrect.");
+      setMessage("Erreur lors de la connexion.");
     }
   };
 
@@ -42,10 +54,10 @@ const Login = () => {
       <h2>Connexion</h2>
       <form onSubmit={handleLogin}>
         <input
-          type="email"
-          placeholder="Adresse email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          type="text"
+          placeholder="Email ou nom d'utilisateur"
+          value={identifiant}
+          onChange={(e) => setIdentifiant(e.target.value)}
           required
         />
         <input

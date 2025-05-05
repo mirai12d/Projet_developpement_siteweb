@@ -8,7 +8,7 @@ const Accueil = () => {
       <div className="accueil-content">
         <h1>Votre site web professionnel, rapide et sur mesure</h1>
         <p>
-          Koodi vous accompagne dans la création de sites modernes,
+          Ovrkode vous accompagne dans la création de sites modernes,
           performants et adaptés aux petites entreprises.
         </p>
         <div className="accueil-buttons">
