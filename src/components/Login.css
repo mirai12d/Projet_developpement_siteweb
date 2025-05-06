@@ -1,75 +1,83 @@
 .auth-container {
-    max-width: 400px;
-    margin: 80px auto;
-    background: #ffffff;
-    padding: 40px 30px;
-    border-radius: 10px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
-    text-align: center;
-  }
-  
-  .auth-container h2 {
-    margin-bottom: 20px;
-    color: #1b7f79;
-  }
-  
-  .auth-container form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .auth-container input {
-    padding: 12px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 14px;
-  }
-  
-  .auth-container button {
-    background-color: #1b7f79;
-    color: #fff;
-    border: none;
-    padding: 12px;
-    border-radius: 8px;
-    font-weight: bold;
-    font-size: 15px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-  }
-  
-  .auth-container button:hover {
-    background-color: #14665f;
-  }
-  
-  .message {
-    margin-top: 15px;
-    font-size: 14px;
-    color: #555;
-  }
-  .message {
-    margin-top: 15px;
-    font-size: 15px;
-    text-align: center;
-  }
-  
-  .message.success {
-    color: green;
-  }
-  
-  .message.error {
-    color: red;
-  }
-  
-  .switch-auth {
-    margin-top: 20px;
-    font-size: 15px;
-    text-align: center;
-  }
-  
-  .switch-auth .link {
-    color: #1b7f79;
-    font-weight: 600;
-    cursor: pointer;
-  }
-  
+  max-width: 420px;
+  margin: 80px auto;
+  background: #ffffff;
+  padding: 40px 30px;
+  border-radius: 12px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.04);
+  text-align: center;
+}
+
+.auth-container h2 {
+  margin-bottom: 24px;
+  color: #1b7f79;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.auth-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.auth-container input {
+  padding: 14px 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: border 0.2s ease;
+}
+
+.auth-container input:focus {
+  border-color: #1b7f79;
+  outline: none;
+}
+
+.auth-container button {
+  background-color: #1b7f79;
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.auth-container button:hover {
+  background-color: #0e5f5a;
+}
+
+.message {
+  margin-top: 15px;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+.message.success {
+  color: #2e7d32;
+}
+
+.message.error {
+  color: #d32f2f;
+}
+
+.switch-auth {
+  margin-top: 24px;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+.switch-auth .link {
+  color: #1b7f79;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.switch-auth .link:hover {
+  text-decoration: underline;
+}

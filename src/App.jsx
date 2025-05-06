@@ -6,18 +6,19 @@ import Services from './components/Services';
 import Projects from './components/Projects';
 import About from './components/About';
 import Contact from './components/Contact';
-import Header from './components/Header';
+import FullScreenMenu from './components/FullScreenMenu';
 import Footer from './components/Footer';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import Commande from './components/Commande';
 import PrivateRoute from './components/PrivateRoute'; // ✅ ajouté
 
+
 function App() {
   return (
     <>
       <ScrollToTop />
-      <Header />
+      <FullScreenMenu />
       <Routes>
         <Route path="/" element={<Accueil />} />
         <Route path="/services" element={<Services />} />
