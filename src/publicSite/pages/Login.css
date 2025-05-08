@@ -1,58 +1,60 @@
 .auth-container {
-  max-width: 420px;
-  margin: 80px auto;
-  background: #ffffff;
-  padding: 40px 30px;
-  border-radius: 12px;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.04);
+  max-width: 460px;
+  margin: 100px auto;
+  padding: 40px 32px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.05);
   text-align: center;
+  padding-top: 15px;
 }
 
 .auth-container h2 {
-  margin-bottom: 24px;
-  color: #1b7f79;
-  font-size: 2rem;
+  margin-bottom: 28px;
+  font-size: 2.2rem;
   font-weight: 700;
+  color: #1b1b1b;
 }
 
 .auth-container form {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 18px;
 }
 
 .auth-container input {
-  padding: 14px 16px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  padding: 14px 18px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
   font-size: 1rem;
-  font-family: inherit;
-  transition: border 0.2s ease;
+  background-color: #fafafa;
+  transition: border 0.2s ease, background-color 0.2s ease;
 }
 
 .auth-container input:focus {
   border-color: #1b7f79;
+  background-color: #fff;
   outline: none;
 }
 
 .auth-container button {
   background-color: #1b7f79;
   color: white;
-  border: none;
   padding: 14px;
-  border-radius: 8px;
   font-weight: 600;
+  border: none;
+  border-radius: 10px;
   font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 .auth-container button:hover {
-  background-color: #0e5f5a;
+  background-color: #14665f;
 }
 
 .message {
-  margin-top: 15px;
+  margin-top: 16px;
   font-size: 0.95rem;
   text-align: center;
 }
@@ -66,7 +68,7 @@
 }
 
 .switch-auth {
-  margin-top: 24px;
+  margin-top: 26px;
   font-size: 0.95rem;
   text-align: center;
 }

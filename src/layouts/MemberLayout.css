@@ -1,0 +1,13 @@
+.member-layout {
+    background-color: #fdfdfd; /* clair */
+    color: #222;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .member-content {
+    flex: 1;
+    padding: 40px 20px;
+  }
+  

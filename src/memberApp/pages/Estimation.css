@@ -1,0 +1,42 @@
+.estimation-container {
+    max-width: 600px;
+    margin: 60px auto;
+    padding: 30px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
+    text-align: center;
+    padding-top: 15px;
+  }
+  
+  .estimation-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  
+  .estimation-form input,
+  .estimation-form select,
+  .estimation-form textarea {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+  }
+  
+  .estimation-form button {
+    padding: 14px;
+    background-color: #1b7f79;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .estimation-form button:hover {
+    background-color: #14665f;
+  }
+  

@@ -1,8 +1,9 @@
 import React, { useState, useContext } from 'react';
 import './Login.css';
-import { AuthContext } from '../context/AuthContext';
-import { useNavigate } from 'react-router-dom';
-import { login as loginApi } from '../api/api'; // ⬅️ Import API
+import { AuthContext } from '../../context/AuthContext';
+import { useNavigate, useLocation } from 'react-router-dom';
+
+const API_URL = process.env.REACT_APP_API_URL || '';
 
 const Login = () => {
   const [identifiant, setIdentifiant] = useState('');
@@ -12,6 +13,7 @@ const Login = () => {
 
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
+  const location = useLocation(); // ⬅️ récupère l'origine si redirigé
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -23,7 +25,13 @@ const Login = () => {
     }
 
     try {
-      const result = await loginApi({ identifiant, password });
+      const response = await fetch(`${API_URL}/api/auth/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ identifiant, password }),
+      });
+
+      const result = await response.json();
 
       if (result.token) {
         localStorage.setItem('token', result.token);
@@ -35,8 +43,8 @@ const Login = () => {
         setSuccess(true);
         setMessage("Connexion réussie !");
         setTimeout(() => {
-          navigate('/');
-          window.location.reload(); // force le header à se recharger et fermer le menu
+          // 🔁 Reste sur la page d'origine ou retourne à l'accueil
+          navigate(location.state?.from || '/');
         }, 1000);
       } else {
         setSuccess(false);

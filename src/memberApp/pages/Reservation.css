@@ -1,0 +1,21 @@
+.reservation-container {
+  padding: 60px 24px;
+  max-width: 1000px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  text-align: center;
+  padding-top: 15px;
+}
+
+.reservation-container h2 {
+  font-size: 2.2rem;
+  color: #111111;
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+.reservation-container p {
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  color: #333333;
+}

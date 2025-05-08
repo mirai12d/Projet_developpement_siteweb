@@ -1,0 +1,66 @@
+.accueil {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 100px 20px 60px;
+  background: #f9f9f9;
+  text-align: center;
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding-top:15px;
+}
+
+.accueil-content {
+  max-width: 800px;
+}
+
+.accueil h1 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #111;
+  margin-bottom: 20px;
+}
+
+.accueil p {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #444;
+  margin-bottom: 40px;
+}
+
+.accueil-buttons {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btn-principal,
+.btn-secondaire {
+  text-decoration: none;
+  font-weight: 600;
+  padding: 14px 24px;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.btn-principal {
+  background-color: #1b7f79;
+  color: white;
+}
+
+.btn-principal:hover {
+  background-color: #135e5a;
+}
+
+.btn-secondaire {
+  border: 2px solid #1b7f79;
+  color: #1b7f79;
+  background-color: transparent;
+}
+
+.btn-secondaire:hover {
+  background-color: #1b7f79;
+  color: white;
+}

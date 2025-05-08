@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import './Signup.css';
 import { useNavigate } from 'react-router-dom';
-import { register } from '../api/api'; // <-- Import API
+
+const API_URL = process.env.REACT_APP_API_URL || '';
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -41,15 +42,21 @@ const Signup = () => {
 
     if (Object.keys(validationErrors).length === 0) {
       try {
-        const result = await register({
-          username: formData.username,
-          nom: formData.nom,
-          prenom: formData.prenom,
-          email: formData.email,
-          password: formData.motDePasse,
-          telephone: formData.telephone,
-          entreprise: formData.entreprise
+        const response = await fetch(`${API_URL}/api/auth/register`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            username: formData.username,
+            nom: formData.nom,
+            prenom: formData.prenom,
+            email: formData.email,
+            password: formData.motDePasse,
+            telephone: formData.telephone,
+            entreprise: formData.entreprise
+          }),
         });
+
+        const result = await response.json();
 
         if (result && result.id) {
           setSuccess(true);

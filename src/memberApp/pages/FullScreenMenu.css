@@ -1,0 +1,158 @@
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 40px;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  .menu-logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #111;
+    text-decoration: none;
+  }
+  
+  .top-links {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+  
+  .top-link {
+    font-size: 16px;
+    font-weight: 500;
+    color: #111;
+    cursor: pointer;
+  }
+  
+  .top-link:hover {
+    color: #1b7f79;
+  }
+  
+  .profile-menu {
+    position: relative;
+  }
+  
+  .profile-icon {
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 6px;
+    cursor: pointer;
+  }
+  
+  .profile-dropdown {
+    position: absolute;
+    top: 130%;
+    right: 0;
+    background: white;
+    border: 1px solid #eee;
+    padding: 12px;
+    border-radius: 8px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+    min-width: 180px;
+    z-index: 1001;
+  }
+  
+  .profile-email {
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+  
+  .logout-btn {
+    background: #f44336;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  /* Mega menu (hidden by default) */
+  .mega-menu {
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+    padding: 40px 60px;
+    background: #f9f9f9;
+    border-top: 1px solid #ddd;
+    box-shadow: 0 6px 32px rgba(0, 0, 0, 0.08);
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 64px;
+    z-index: 999;
+  
+    opacity: 0;
+    transform: translateY(-8px);
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  
+  .mega-menu.open {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  
+  .menu-column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 180px;
+  }
+  
+  .menu-column h4 {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #333;
+  }
+  
+  .menu-column a {
+    text-decoration: none;
+    font-size: 15px;
+    color: #111;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+  
+  .menu-column a:hover {
+    color: #1b7f79;
+  }
+  
+  .icon {
+    margin-right: 6px;
+  }
+  
+  .badge {
+    background: black;
+    color: white;
+    padding: 2px 6px;
+    font-size: 10px;
+    border-radius: 4px;
+    margin-left: 4px;
+    vertical-align: middle;
+  }
+  .top-link.member-btn {
+    border: 1px solid #1b7f79;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 15px;
+    background-color: transparent;
+    color: #1b7f79;
+    transition: all 0.3s ease;
+    text-decoration: none;
+  }
+  
+  .top-link.member-btn:hover {
+    background-color: #1b7f79;
+    color: #fff;
+  }
+  

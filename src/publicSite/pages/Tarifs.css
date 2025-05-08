@@ -1,0 +1,124 @@
+.tarifs-container {
+  padding: 100px 40px;
+  background-color: #f5f6fa;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.tarifs-title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #111;
+  margin-bottom: 60px;
+  letter-spacing: -0.5px;
+}
+
+.forfaits-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+}
+
+.forfait-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 40px 32px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.05);
+  width: 300px;
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-top: 5px solid transparent;
+}
+
+.forfait-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.1);
+}
+
+.forfait-card h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 12px;
+}
+
+.prix {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #1b7f79;
+  margin-bottom: 16px;
+}
+
+.description {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 24px;
+  min-height: 50px;
+}
+
+.forfait-card ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 24px;
+}
+
+.forfait-card li {
+  font-size: 0.95rem;
+  color: #444;
+  margin-bottom: 10px;
+  position: relative;
+  padding-left: 20px;
+}
+
+.forfait-card li::before {
+  content: '✔';
+  position: absolute;
+  left: 0;
+  color: #1b7f79;
+  font-size: 0.85rem;
+  top: 1px;
+}
+
+.btn-tarif {
+  background-color: #1b7f79;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+.btn-tarif:hover {
+  background-color: #0f5e59;
+}
+
+/* Couleurs de bordures selon les forfaits */
+.forfait-essor {
+  border-top-color: #ccc;
+}
+.forfait-elan {
+  border-top-color: #5bc0be;
+}
+.forfait-propulsion {
+  border-top-color: #f9a826;
+}
+.forfait-ascension {
+  border-top-color: #d7263d;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .forfaits-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .forfait-card {
+    width: 90%;
+  }
+}

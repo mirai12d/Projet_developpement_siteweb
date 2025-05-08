@@ -1,25 +1,48 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import ScrollToTop from './components/ScrollToTop';
-import Tarifs from "./components/Tarifs";
-import Accueil from "./components/Accueil";
-import Services from './components/Services';
-import Projects from './components/Projects';
-import About from './components/About';
-import Contact from './components/Contact';
-import FullScreenMenu from './components/FullScreenMenu';
-import Footer from './components/Footer';
-import Login from './components/Login';
-import Signup from './components/Signup';
-import Commande from './components/Commande';
-import PrivateRoute from './components/PrivateRoute'; // ✅ ajouté
+import { Routes, Route, useLocation } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "./context/AuthContext";
 
+// Composants partagés
+import ScrollToTop from './shared/ScrollToTop';
+import ScrollButton from "./shared/ScrollButton";
+import FullScreenMenu from "./memberApp/pages/FullScreenMenu";
+import PublicFooter from "./publicSite/components/PublicFooter";
+
+// Pages publiques
+import Accueil from "./publicSite/pages/Accueil";
+import Services from "./publicSite/pages/Services";
+import Projects from "./publicSite/pages/Projects";
+import Tarifs from "./publicSite/pages/Tarifs";
+import About from "./publicSite/pages/About";
+import Contact from './memberApp/pages/Contact';
+import Login from "./publicSite/pages/Login";
+import Signup from "./publicSite/pages/Signup";
+
+// Composants membres
+import BottomBar from "./memberApp/components/BottomBar";
+import MemberFooter from "./memberApp/components/Footer";
+
+// Pages membres (protégées)
+import Commande from "./memberApp/pages/Commande";
+import Estimation from "./memberApp/pages/Estimation";
+import Reservation from "./memberApp/pages/Reservation";
+import Profil from "./memberApp/pages/Profil";
+
+// Routes protégées
+import PrivateRoute from "./routes/PrivateRoute";
 
 function App() {
+  const { isAuthenticated } = useContext(AuthContext);
+  const location = useLocation();
+  const isOnMemberPage = ["/commande", "/reservation", "/estimation", "/profil"].includes(location.pathname);
+
   return (
     <>
       <ScrollToTop />
       <FullScreenMenu />
+
       <Routes>
+        {/* Pages publiques */}
         <Route path="/" element={<Accueil />} />
         <Route path="/services" element={<Services />} />
         <Route path="/projects" element={<Projects />} />
@@ -28,17 +51,19 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        {/* ✅ Route protégée */}
-        <Route
-          path="/commande"
-          element={
-            <PrivateRoute>
-              <Commande />
-            </PrivateRoute>
-          }
-        />
+
+        {/* Pages membres protégées */}
+        <Route path="/commande" element={<PrivateRoute><Commande /></PrivateRoute>} />
+        <Route path="/reservation" element={<PrivateRoute><Reservation /></PrivateRoute>} />
+        <Route path="/estimation" element={<PrivateRoute><Estimation /></PrivateRoute>} />
+        <Route path="/profil" element={<PrivateRoute><Profil /></PrivateRoute>} />
       </Routes>
-      <Footer />
+
+      {/* Affichage du footer et de la bottom bar */}
+      {isAuthenticated && isOnMemberPage && <BottomBar />}
+      {isAuthenticated && isOnMemberPage ? <MemberFooter /> : <PublicFooter />}
+      
+      <ScrollButton />
     </>
   );
 }

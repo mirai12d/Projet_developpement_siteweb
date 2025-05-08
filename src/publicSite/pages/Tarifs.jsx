@@ -2,7 +2,7 @@ import React from 'react';
 import './Tarifs.css';
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
-import { AuthContext } from '../context/AuthContext';
+import { AuthContext } from '../../context/AuthContext';
 
 const Tarifs = () => {
   const navigate = useNavigate();
