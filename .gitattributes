@@ -1,7 +1,15 @@
-# Appliquer automatiquement les conversions de fin de ligne
+# === Assets (pas de conversion de fin de ligne) ===
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.svg   binary
+*.ico   binary
+
+# === Appliquer automatiquement les conversions de fin de ligne pour le code ===
 * text=auto
 
-# Forcer LF pour tous les fichiers courants du projet
+# === Forcer LF pour le code ===
 *.js     text eol=lf
 *.jsx    text eol=lf
 *.ts     text eol=lf
