@@ -1,21 +1,187 @@
+/* ===== RESERVATION CONTAINER ===== */
 .reservation-container {
-  padding: 60px 24px;
-  max-width: 1000px;
-  margin: 0 auto;
-  background-color: #ffffff;
-  text-align: center;
-  padding-top: 15px;
+  padding: 60px 40px;
+  max-width: 1200px;
+  margin: auto;
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.05);
+  font-family: 'Poppins', sans-serif;
 }
 
-.reservation-container h2 {
-  font-size: 2.2rem;
-  color: #111111;
-  margin-bottom: 12px;
+.reservation-container h1 {
+  font-size: 2.4rem;
   font-weight: 700;
+  color: #111;
+  margin-bottom: 12px;
+  text-align: center;
 }
 
-.reservation-container p {
+.reservation-container .subtitle {
   font-size: 1.1rem;
-  margin-bottom: 30px;
-  color: #333333;
+  color: #555;
+  margin-bottom: 36px;
+  text-align: center;
+}
+
+/* ===== CALENDAR WRAPPER ===== */
+.calendar-wrapper {
+  border-radius: 14px;
+  overflow: hidden;
+  background-color: #fafafa;
+  padding: 20px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.04);
+}
+
+/* ===== FULLCALENDAR GRID STYLE ===== */
+/* lignes d’heures horizontales */
+.calendar-wrapper .fc .fc-timegrid-slot-lane {
+  border-bottom: 1px solid #e5e5e5;
+}
+.calendar-wrapper .fc .fc-timegrid-slot-lane:nth-child(even) {
+  background-color: #f8f8f8;
+}
+
+/* en-têtes de ligne horaire (axe des heures) */
+.calendar-wrapper .fc .fc-timegrid-axis .fc-timegrid-slot-label-cushion {
+  border-top: 1px solid #e5e5e5;
+  padding-top: 4px;
+}
+
+/* en-têtes de jours */
+.calendar-wrapper .fc .fc-col-header-cell-cushion {
+  font-weight: 500;
+  color: #333;
+  background: #fff;
+  padding: 8px 0;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+/* ===== LIGNES VERTICALES ENTRE JOURS ===== */
+.calendar-wrapper .fc .fc-col-header-cell {
+  border-right: 1px solid #e5e5e5;
+}
+.calendar-wrapper .fc .fc-col-header-cell:last-child {
+  border-right: none;
+}
+
+.calendar-wrapper .fc .fc-timegrid-col {
+  border-right: 1px solid #e5e5e5;
+}
+.calendar-wrapper .fc .fc-timegrid-col:last-child {
+  border-right: none;
+}
+
+/* ===== HEADER TOOLBAR ===== */
+.calendar-wrapper .fc .fc-toolbar-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #111;
+}
+
+.calendar-wrapper .fc .fc-button {
+  background-color: #111;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+.calendar-wrapper .fc .fc-button:hover {
+  background-color: #333;
+}
+.calendar-wrapper .fc .fc-button-primary.fc-button-active {
+  background-color: #000;
+}
+
+/* ===== EVENTS ===== */
+.calendar-wrapper .fc .fc-event {
+  border-radius: 8px !important;
+  padding: 4px 6px !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* ===== MODAL OVERLAY ===== */
+.reservation-overlay {
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+/* ===== MODAL BOX ===== */
+.reservation-modal {
+  background: white;
+  border-radius: 16px;
+  padding: 40px;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+}
+
+.reservation-modal h2 {
+  font-size: 1.8rem;
+  margin-bottom: 8px;
+  color: #111;
+}
+
+.modal-date {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #666;
+  margin-bottom: 24px;
+}
+
+/* ===== FORM FIELDS ===== */
+.reservation-modal input {
+  width: 100%;
+  display: block;
+  padding: 12px 16px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 1rem;
+  background-color: #fafafa;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.reservation-modal input:focus {
+  border-color: #888;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.05);
+}
+
+/* ===== MODAL BUTTONS ===== */
+.modal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 12px;
+}
+.confirm-btn,
+.cancel-btn {
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: background 0.2s ease;
+}
+.confirm-btn {
+  background-color: #111;
+  color: #fff;
+}
+.confirm-btn:hover {
+  background-color: #000;
+}
+.cancel-btn {
+  background-color: #eee;
+  color: #111;
+}
+.cancel-btn:hover {
+  background-color: #ddd;
 }

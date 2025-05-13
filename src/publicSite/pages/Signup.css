@@ -24,21 +24,21 @@
 
 .auth-container input {
   padding: 14px 18px;
-  border: 1px solid #ddd;
+  border: 1px solid #ccc;
   border-radius: 10px;
   font-size: 1rem;
-  background-color: #fafafa;
+  background-color: #f2f2f2;
   transition: border 0.2s ease, background-color 0.2s ease;
 }
 
 .auth-container input:focus {
-  border-color: #1b7f79;
+  border-color: #333;
   background-color: #fff;
   outline: none;
 }
 
 .auth-container button {
-  background-color: #1b7f79;
+  background-color: #111;
   color: white;
   border: none;
   padding: 14px;
@@ -50,7 +50,7 @@
 }
 
 .auth-container button:hover {
-  background-color: #125f57;
+  background-color: #333;
 }
 
 .message {
@@ -60,7 +60,7 @@
 }
 
 .message.success {
-  color: #2e7d32;
+  color: #2e2e2e;
 }
 
 .message.error,
@@ -77,7 +77,7 @@
 }
 
 .switch-auth .link {
-  color: #1b7f79;
+  color: #111;
   font-weight: 600;
   cursor: pointer;
   text-decoration: none;
@@ -87,20 +87,19 @@
   text-decoration: underline;
 }
 
-/* Ligne au-dessus du bouton dans login pour proposer d'aller à signup */
 .redirect-login {
   text-align: center;
   margin-bottom: 24px;
   font-weight: 500;
-  color: #1b7f79;
+  color: #111;
 }
 
 .redirect-login a {
-  color: #1b7f79;
+  color: #111;
   font-weight: 600;
   text-decoration: none;
   margin-left: 8px;
-  border: 1px solid #1b7f79;
+  border: 1px solid #333;
   padding: 6px 12px;
   border-radius: 6px;
   font-size: 0.95rem;
@@ -108,6 +107,9 @@
 }
 
 .redirect-login a:hover {
-  background-color: #1b7f79;
+  background-color: #111;
   color: white;
+}
+.auth-avatar {
+  margin-bottom: 16px;
 }

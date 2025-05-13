@@ -27,6 +27,8 @@ import Commande from "./memberApp/pages/Commande";
 import Estimation from "./memberApp/pages/Estimation";
 import Reservation from "./memberApp/pages/Reservation";
 import Profil from "./memberApp/pages/Profil";
+import DashboardAccueil from "./memberApp/pages/DashboardAccueil"; // en haut du fichier
+import Support from "./memberApp/pages/Support";
 
 // Routes protégées
 import PrivateRoute from "./routes/PrivateRoute";
@@ -34,7 +36,7 @@ import PrivateRoute from "./routes/PrivateRoute";
 function App() {
   const { isAuthenticated } = useContext(AuthContext);
   const location = useLocation();
-  const isOnMemberPage = ["/commande", "/reservation", "/estimation", "/profil"].includes(location.pathname);
+  const isOnMemberPage = ["/dashboard", "/commande", "/reservation", "/estimation", "/profil", "/support"].includes(location.pathname);
 
   return (
     <>
@@ -57,6 +59,9 @@ function App() {
         <Route path="/reservation" element={<PrivateRoute><Reservation /></PrivateRoute>} />
         <Route path="/estimation" element={<PrivateRoute><Estimation /></PrivateRoute>} />
         <Route path="/profil" element={<PrivateRoute><Profil /></PrivateRoute>} />
+        <Route path="/dashboard" element={<PrivateRoute><DashboardAccueil /></PrivateRoute>} />
+        <Route path="/support" element={<PrivateRoute><Support /></PrivateRoute>} />
+
       </Routes>
 
       {/* Affichage du footer et de la bottom bar */}

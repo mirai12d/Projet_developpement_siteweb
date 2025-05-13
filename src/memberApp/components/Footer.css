@@ -1,16 +1,17 @@
 .footer {
   padding: 64px 40px 48px;
-  background-color: #0d0d0d;
+  background-color: #111;
   color: #f0f0f0;
   text-align: center;
   font-size: 0.95rem;
   border-top: 1px solid #2c2c2c;
+  font-family: 'Poppins', sans-serif;
 }
 
 .footer p {
   margin-bottom: 24px;
   font-weight: 400;
-  color: #cccccc;
+  color: #bbb;
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
@@ -28,7 +29,7 @@
 
 .footer-links a,
 .footer-socials a {
-  color: #aaa;
+  color: #ccc;
   text-decoration: none;
   font-size: 0.95rem;
   font-weight: 500;
@@ -42,14 +43,14 @@
   display: block;
   height: 2px;
   width: 0%;
-  background-color: #f0f0f0;
+  background-color: #eee;
   transition: width 0.3s ease;
   margin-top: 4px;
 }
 
 .footer-links a:hover,
 .footer-socials a:hover {
-  color: #ffffff;
+  color: #fff;
 }
 
 .footer-links a:hover::after,

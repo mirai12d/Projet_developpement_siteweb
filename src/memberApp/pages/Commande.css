@@ -7,6 +7,7 @@
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
   font-family: 'Segoe UI', sans-serif;
   color: #111;
+  padding-top: 15px;
 }
 
 .commande-container h2 {
@@ -14,13 +15,13 @@
   margin-bottom: 32px;
   font-size: 2.2rem;
   font-weight: 800;
-  color: #1b7f79;
+  color: #111;
 }
 
 .commande-container h3 {
   margin-top: 24px;
   font-size: 1.4rem;
-  color: #1b7f79;
+  color: #222;
   font-weight: 700;
   margin-bottom: 10px;
 }
@@ -52,14 +53,14 @@
   left: 0;
   top: 0;
   font-size: 0.9rem;
-  color: #1b7f79;
+  color: #111;
 }
 
 .btn-commander {
   margin-top: 40px;
   width: 100%;
   padding: 16px;
-  background-color: #1b7f79;
+  background-color: #111;
   color: #ffffff;
   font-weight: 600;
   border: none;
@@ -70,6 +71,6 @@
 }
 
 .btn-commander:hover {
-  background-color: #0f5e59;
+  background-color: #333;
   transform: translateY(-2px);
 }

@@ -13,7 +13,7 @@
   margin-bottom: 28px;
   font-size: 2.2rem;
   font-weight: 700;
-  color: #1b1b1b;
+  color: #111;
 }
 
 .auth-container form {
@@ -24,21 +24,21 @@
 
 .auth-container input {
   padding: 14px 18px;
-  border: 1px solid #ddd;
+  border: 1px solid #ccc;
   border-radius: 10px;
   font-size: 1rem;
-  background-color: #fafafa;
+  background-color: #f7f7f7;
   transition: border 0.2s ease, background-color 0.2s ease;
 }
 
 .auth-container input:focus {
-  border-color: #1b7f79;
+  border-color: #444;
   background-color: #fff;
   outline: none;
 }
 
 .auth-container button {
-  background-color: #1b7f79;
+  background-color: #111;
   color: white;
   padding: 14px;
   font-weight: 600;
@@ -50,7 +50,7 @@
 }
 
 .auth-container button:hover {
-  background-color: #14665f;
+  background-color: #333;
 }
 
 .message {
@@ -60,7 +60,7 @@
 }
 
 .message.success {
-  color: #2e7d32;
+  color: #2e7d32; /* tu peux la changer par #333 si tu veux garder uniquement du gris/noir */
 }
 
 .message.error {
@@ -74,7 +74,7 @@
 }
 
 .switch-auth .link {
-  color: #1b7f79;
+  color: #111;
   font-weight: 600;
   cursor: pointer;
   text-decoration: none;
@@ -82,4 +82,21 @@
 
 .switch-auth .link:hover {
   text-decoration: underline;
+}
+.auth-avatar {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.auth-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #111;
+}
+
+.auth-subtitle {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 30px;
 }

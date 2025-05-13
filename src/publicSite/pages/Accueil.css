@@ -1,66 +1,70 @@
 .accueil {
+  background-color: #f5f5f5;
   display: flex;
-  justify-content: center;
   align-items: center;
-  padding: 100px 20px 60px;
-  background: #f9f9f9;
-  text-align: center;
+  justify-content: center;
   min-height: 100vh;
-  box-sizing: border-box;
-  padding-top:15px;
+  padding: 80px 40px;
+  text-align: center;
+  padding-top:100px;
 }
 
 .accueil-content {
-  max-width: 800px;
+  max-width: 900px;
 }
 
 .accueil h1 {
-  font-size: 2.8rem;
-  font-weight: 800;
-  color: #111;
+  font-size: 3rem;
+  font-weight: 600;
   margin-bottom: 20px;
+  color: #111;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
 }
 
 .accueil p {
-  font-size: 1.2rem;
-  font-weight: 400;
-  color: #444;
+  font-size: 1.25rem;
+  color: #666;
   margin-bottom: 40px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .accueil-buttons {
   display: flex;
   gap: 20px;
-  flex-wrap: wrap;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .btn-principal,
 .btn-secondaire {
-  text-decoration: none;
-  font-weight: 600;
-  padding: 14px 24px;
-  border-radius: 8px;
+  padding: 14px 32px;
   font-size: 1rem;
+  font-weight: 500;
+  border-radius: 40px;
+  text-decoration: none;
   transition: all 0.3s ease;
 }
 
 .btn-principal {
-  background-color: #1b7f79;
+  background-color: #111;
   color: white;
+  border: none;
 }
 
 .btn-principal:hover {
-  background-color: #135e5a;
+  background-color: #333;
 }
 
 .btn-secondaire {
-  border: 2px solid #1b7f79;
-  color: #1b7f79;
   background-color: transparent;
+  border: 2px solid #111;
+  color: #111;
 }
 
 .btn-secondaire:hover {
-  background-color: #1b7f79;
+  background-color: #111;
   color: white;
 }

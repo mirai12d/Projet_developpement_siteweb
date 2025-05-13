@@ -1,73 +1,174 @@
-import React, { useState } from 'react';
-import { Calendar, dateFnsLocalizer } from 'react-big-calendar';
-import format from 'date-fns/format';
-import parse from 'date-fns/parse';
-import startOfWeek from 'date-fns/startOfWeek';
-import getDay from 'date-fns/getDay';
-import fr from 'date-fns/locale/fr';
-import 'react-big-calendar/lib/css/react-big-calendar.css';
+import React, { useState, useEffect } from 'react';
+import MemberLayout from '../../layouts/MemberLayout';
+import FullCalendar from '@fullcalendar/react';
+import timeGridPlugin from '@fullcalendar/timegrid';
+import interactionPlugin from '@fullcalendar/interaction';
+import Modal from 'react-modal';
 import './Reservation.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-const locales = {
-  fr: fr,
+Modal.setAppElement('#root');
+
+const customModalStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    transform: 'translate(-50%, -50%)',
+    borderRadius: '16px',
+    padding: '40px',
+    width: '100%',
+    maxWidth: '480px',
+    boxShadow: '0 8px 32px rgba(0,0,0,0.25)',
+  },
+  overlay: {
+    backgroundColor: 'rgba(0,0,0,0.4)',
+    zIndex: 9999,
+  },
 };
 
-const localizer = dateFnsLocalizer({
-  format,
-  parse,
-  startOfWeek,
-  getDay,
-  locales,
-});
-
-const events = [
-  {
-    title: 'Rendez-vous disponible',
-    start: new Date(2025, 4, 8, 10, 0), // 8 mai 2025 à 10h00
-    end: new Date(2025, 4, 8, 11, 0),
-  },
-  {
-    title: 'Rendez-vous disponible',
-    start: new Date(2025, 4, 9, 14, 0),
-    end: new Date(2025, 4, 9, 15, 0),
-  },
-];
-
 const Reservation = () => {
-  const [selectedEvent, setSelectedEvent] = useState(null);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [selectedSlot, setSelectedSlot] = useState(null);
+  const [formData, setFormData] = useState({
+    nom: '',
+    email: '',
+    service: '',
+  });
+  const [events, setEvents] = useState([]);
 
-  const handleSelectSlot = ({ start, end }) => {
-    alert(`Demande de rendez-vous :\nDe ${format(start, 'Pp')} à ${format(end, 'Pp')}`);
+  useEffect(() => {
+    const fetchReservations = async () => {
+      try {
+        const response = await fetch('http://localhost:3001/api/reservations');
+        const data = await response.json();
+        const formatted = data.map(res => ({
+          title: `${res.service} (${res.nom})`,
+          start: res.date,
+        }));
+        setEvents(formatted);
+      } catch (err) {
+        console.error('Erreur chargement réservations', err);
+      }
+    };
+
+    fetchReservations();
+  }, []);
+
+  const handleDateClick = (arg) => {
+    const alreadyReserved = events.some(
+      (event) => new Date(event.start).toISOString() === new Date(arg.dateStr).toISOString()
+    );
+    if (alreadyReserved) {
+      toast.error("Ce créneau est déjà réservé.");
+      return;
+    }
+    setSelectedSlot(arg);
+    setModalIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalIsOpen(false);
+    setSelectedSlot(null);
+    setFormData({ nom: '', email: '', service: '' });
+  };
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleConfirm = async () => {
+    const heure = new Date(selectedSlot.dateStr).toTimeString().split(':').slice(0, 2).join(':');
+
+    try {
+      const response = await fetch('http://localhost:3001/api/reservations', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...formData,
+          date: selectedSlot.dateStr,
+          heure, // 👈 envoyé avec le reste
+        }),
+      });
+
+      if (response.ok) {
+        toast.success(`Réservation confirmée pour le ${selectedSlot.dateStr}`);
+        setEvents(prev => [...prev, {
+          title: `${formData.service} (${formData.nom})`,
+          start: selectedSlot.dateStr,
+        }]);
+        closeModal();
+      } else {
+        toast.error('Échec de la réservation');
+      }
+    } catch (err) {
+      console.error(err);
+      toast.error('Erreur serveur');
+    }
+  };
+
+  const isSlotAvailable = (selectInfo) => {
+    const selectedDate = new Date(selectInfo.startStr);
+    const now = new Date();
+    if (selectedDate < now) return false;
+    return !events.some(event =>
+      new Date(event.start).toISOString() === selectedDate.toISOString()
+    );
   };
 
   return (
-    <div className="reservation-container">
-      <h2>Réservez un créneau avec notre équipe</h2>
-      <p>Choisissez une plage horaire disponible dans le calendrier ci-dessous :</p>
+    <MemberLayout>
+      <div className="reservation-container">
+        <h1>Réservez un créneau avec notre équipe</h1>
+        <p className="subtitle">Choisissez une plage horaire dans le calendrier ci-dessous</p>
 
-      <Calendar
-        localizer={localizer}
-        events={events}
-        selectable
-        defaultView="week"
-        views={['week', 'day']}
-        step={30}
-        timeslots={2}
-        defaultDate={new Date()}
-        style={{ height: '80vh' }}
-        onSelectSlot={handleSelectSlot}
-        onSelectEvent={event => setSelectedEvent(event)}
-        messages={{
-          week: 'Semaine',
-          day: 'Jour',
-          agenda: 'Agenda',
-          date: 'Date',
-          time: 'Heure',
-          event: 'Événement',
-          noEventsInRange: 'Aucun événement',
-        }}
-      />
-    </div>
+        <div className="calendar-wrapper">
+          <FullCalendar
+            plugins={[timeGridPlugin, interactionPlugin]}
+            initialView="timeGridWeek"
+            slotDuration="01:00:00"
+            allDaySlot={false}
+            selectable={true}
+            selectAllow={isSlotAvailable}
+            dateClick={handleDateClick}
+            events={events.map(e => ({
+              ...e,
+              backgroundColor: '#ccc',
+              borderColor: '#ccc',
+              textColor: '#444',
+            }))}
+            height="auto"
+            locale="fr"
+            headerToolbar={{
+              left: 'today prev,next',
+              center: 'title',
+              right: 'timeGridWeek,timeGridDay'
+            }}
+          />
+        </div>
+
+        <Modal
+          isOpen={modalIsOpen}
+          onRequestClose={closeModal}
+          style={customModalStyles}
+          contentLabel="Réservation"
+        >
+          <h2>Confirmer votre réservation</h2>
+          <p className="modal-date">{selectedSlot?.dateStr}</p>
+          <input type="text" name="nom" placeholder="Votre nom" value={formData.nom} onChange={handleChange} />
+          <input type="email" name="email" placeholder="Votre email" value={formData.email} onChange={handleChange} />
+          <input type="text" name="service" placeholder="Service souhaité" value={formData.service} onChange={handleChange} />
+          <div className="modal-actions">
+            <button className="confirm-btn" onClick={handleConfirm}>Confirmer</button>
+            <button className="cancel-btn" onClick={closeModal}>Annuler</button>
+          </div>
+        </Modal>
+
+        <ToastContainer position="bottom-right" autoClose={3000} />
+      </div>
+    </MemberLayout>
   );
 };
 

@@ -5,6 +5,7 @@ const Contact = () => {
   const [formData, setFormData] = useState({
     nom: '',
     email: '',
+    sujet: '',
     message: '',
   });
 
@@ -12,17 +13,34 @@ const Contact = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // À connecter à une API ou un service email plus tard
-    alert("Message envoyé (simulation) !");
-    setFormData({ nom: '', email: '', message: '' });
+
+    try {
+    const response = await fetch('http://localhost:3001/api/contact', {
+
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        alert('Message envoyé avec succès !');
+        setFormData({ nom: '', email: '', sujet: '', message: '' });
+      } else {
+        alert("Erreur lors de l'envoi.");
+      }
+    } catch (error) {
+      console.error('Erreur réseau :', error);
+      alert("Erreur réseau.");
+    }
   };
 
   return (
     <section className="contact" id="contact">
       <h2>Contactez-nous</h2>
-      <p>Vous avez un projet en tête ? Envoyez-nous un message, on vous répond rapidement !</p>
       <form className="contact-form" onSubmit={handleSubmit}>
         <input
           type="text"
@@ -37,6 +55,14 @@ const Contact = () => {
           name="email"
           placeholder="Votre adresse email"
           value={formData.email}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="text"
+          name="sujet"
+          placeholder="Sujet"
+          value={formData.sujet}
           onChange={handleChange}
           required
         />

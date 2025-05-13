@@ -13,7 +13,7 @@ const Login = () => {
 
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
-  const location = useLocation(); // ⬅️ récupère l'origine si redirigé
+  const location = useLocation();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -43,7 +43,6 @@ const Login = () => {
         setSuccess(true);
         setMessage("Connexion réussie !");
         setTimeout(() => {
-          // 🔁 Reste sur la page d'origine ou retourne à l'accueil
           navigate(location.state?.from || '/');
         }, 1000);
       } else {
@@ -59,7 +58,15 @@ const Login = () => {
 
   return (
     <div className="auth-container">
-      <h2>Connexion</h2>
+     <div className="auth-avatar">
+  <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M20 21v-2a4 4 0 0 0-3-3.87M4 21v-2a4 4 0 0 1 3-3.87M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" />
+  </svg>
+</div>
+
+      <h2 className="auth-title">Connexion</h2>
+      <p className="auth-subtitle">Accédez à votre espace membre personnalisé.</p>
+
       <form onSubmit={handleLogin}>
         <input
           type="text"

@@ -1,0 +1,191 @@
+.dashboard-container {
+  padding: 80px 30px 40px; /* ← top plus large */
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: 'Inter', sans-serif;
+  color: #111;
+}
+
+.dashboard-title {
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.dashboard-subtitle {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 32px;
+}
+
+.dashboard-actions {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+.dashboard-card {
+  flex: 1;
+  min-width: 260px;
+  background: #fff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.dashboard-card:hover {
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  transform: translateY(-4px);
+}
+
+.dashboard-card h3 {
+  margin-bottom: 8px;
+  font-size: 1.2rem;
+}
+
+.dashboard-card p {
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.dashboard-summary {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 36px;
+  flex-wrap: wrap;
+}
+
+.summary-block {
+  flex: 1;
+  min-width: 240px;
+  background: #f7f7f7;
+  border-radius: 14px;
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.summary-block:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+  transform: translateY(-4px);
+}
+
+.summary-block h4 {
+  margin: 0;
+  font-size: 1rem;
+  color: #333;
+}
+
+.summary-block p {
+  margin: 0;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.dashboard-reservations h2 {
+  font-size: 1.6rem;
+  margin-bottom: 20px;
+}
+
+.reservation-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.reservation-card {
+  background: #fff;
+  padding: 18px 24px;
+  border: 1px solid #eee;
+  border-radius: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.reservation-card h4 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.reservation-card p {
+  margin: 4px 0 0;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.cancel-button {
+  background: none;
+  border: none;
+  color: #d32f2f;
+  font-weight: bold;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.cancel-button:hover {
+  color: #a51414;
+}
+
+.cancel-modal {
+  background: #fff;
+  padding: 32px;
+  border-radius: 16px;
+  max-width: 420px;
+  margin: auto;
+  position: relative;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+}
+
+.cancel-overlay {
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.btn-cancel {
+  background: none;
+  border: 1px solid #ccc;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn-confirm {
+  background: #d32f2f;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn-confirm:hover {
+  background: #b71c1c;
+}
+
+.loading-text, .empty-text {
+  color: #777;
+  font-size: 0.95rem;
+  padding: 8px;
+}

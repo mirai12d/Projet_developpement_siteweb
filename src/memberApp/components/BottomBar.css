@@ -40,4 +40,26 @@
   .bottom-links a:hover {
     background: #1b7f79;
   }
-  
+  .bottom-links a,
+.bottom-links button {
+  color: #fff;
+  background: #444;
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.bottom-links a:hover,
+.bottom-links button:hover {
+  background: #1b7f79;
+}
+.bottom-links button.active {
+  background-color: #fff;
+  color: #111;
+  font-weight: 600;
+  border-radius: 10px;
+}

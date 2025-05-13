@@ -1,10 +1,17 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import './About.css';
 
 const About = () => {
   return (
     <section className="about" id="about">
-      <div className="about-content">
+      <motion.div
+        className="about-content"
+        initial={{ opacity: 0, y: 60 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.8, ease: 'easeOut' }}
+      >
         <h2>À propos de Ovrkode</h2>
         <p>
           Nous sommes deux développeurs passionnés, basés à Montréal. Grâce à notre expérience en React, Symfony, SQL et design web,
@@ -13,19 +20,7 @@ const About = () => {
         <p>
           Notre mission : vous offrir un site performant, esthétique et simple à gérer. Nous privilégions la qualité, la transparence et l'efficacité.
         </p>
-      </div>
-      <div className="about-team">
-        <div className="team-member">
-          <img src="https://via.placeholder.com/150" alt="Adam" />
-          <h4>Adam Boulisfane</h4>
-          <p>Designer, développeur front-end & fondateur</p>
-        </div>
-        <div className="team-member">
-          <img src="https://via.placeholder.com/150" alt="Ayoub" />
-          <h4>Ayoub Oubalkass</h4>
-          <p>Designer, développeur front-end & fondateur</p>
-        </div>
-      </div>
+      </motion.div>
     </section>
   );
 };

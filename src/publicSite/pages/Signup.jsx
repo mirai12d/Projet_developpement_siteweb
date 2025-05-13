@@ -76,6 +76,12 @@ const Signup = () => {
 
   return (
     <div className="auth-container">
+      <div className="auth-avatar">
+  <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M20 21v-2a4 4 0 0 0-3-3.87M4 21v-2a4 4 0 0 1 3-3.87M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" />
+  </svg>
+</div>
+
       <h2>Inscription</h2>
       <form onSubmit={handleSubmit} noValidate>
         <input type="text" name="username" placeholder="Nom d'utilisateur" onChange={handleChange} />
