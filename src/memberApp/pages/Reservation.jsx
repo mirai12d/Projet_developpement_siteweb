@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'; // ✅ ajout
 import MemberLayout from '../../layouts/MemberLayout';
 import FullCalendar from '@fullcalendar/react';
 import timeGridPlugin from '@fullcalendar/timegrid';
@@ -30,6 +31,7 @@ const customModalStyles = {
 };
 
 const Reservation = () => {
+  const navigate = useNavigate(); // ✅ ajout
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedSlot, setSelectedSlot] = useState(null);
   const [formData, setFormData] = useState({
@@ -89,7 +91,7 @@ const Reservation = () => {
         body: JSON.stringify({
           ...formData,
           date: selectedSlot.dateStr,
-          heure, // 👈 envoyé avec le reste
+          heure,
         }),
       });
 
@@ -121,6 +123,11 @@ const Reservation = () => {
   return (
     <MemberLayout>
       <div className="reservation-container">
+        {/* ✅ BOUTON RETOUR */}
+        <button onClick={() => navigate('/dashboard')} className="back-button">
+          ← Retour au tableau de bord
+        </button>
+
         <h1>Réservez un créneau avec notre équipe</h1>
         <p className="subtitle">Choisissez une plage horaire dans le calendrier ci-dessous</p>
 

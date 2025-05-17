@@ -28,7 +28,7 @@ import Reservation from "./memberApp/pages/Reservation";
 import Profil from "./memberApp/pages/Profil";
 import DashboardAccueil from "./memberApp/pages/DashboardAccueil";
 import Support from "./memberApp/pages/Support";
-
+import Factures from './memberApp/pages/Factures';
 // Routes protégées
 import PrivateRoute from "./routes/PrivateRoute";
 
@@ -42,7 +42,8 @@ function App() {
     location.pathname.startsWith("/reservation") ||
     location.pathname.startsWith("/estimation") ||
     location.pathname.startsWith("/profil") ||
-    location.pathname.startsWith("/support");
+    location.pathname.startsWith("/support") ||
+    location.pathname.startsWith("/factures");
 
   if (loading) return <Loader />; // ✅ Affichage du loader pendant la vérification
 
@@ -67,6 +68,7 @@ function App() {
         <Route path="/profil" element={<PrivateRoute><Profil /></PrivateRoute>} />
         <Route path="/dashboard" element={<PrivateRoute><DashboardAccueil /></PrivateRoute>} />
         <Route path="/support" element={<PrivateRoute><Support /></PrivateRoute>} />
+        <Route path="/factures" element={<PrivateRoute><Factures/></PrivateRoute>} />
       </Routes>
 
       {/* Footer et BottomBar conditionnels */}

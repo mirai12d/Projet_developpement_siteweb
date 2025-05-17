@@ -1,6 +1,7 @@
 /* ===== RESERVATION CONTAINER ===== */
 .reservation-container {
   padding: 60px 40px;
+  padding-top: 100px;
   max-width: 1500px;
   margin: auto;
   background-color: #fff;
@@ -221,7 +222,7 @@
 @media (max-width: 768px) {
   .reservation-container {
     padding: 30px 20px;
-     padding-top: 100px !important;
+     padding-top: 120px !important;
   }
 
   .reservation-container h1 {
@@ -257,4 +258,22 @@
     width: 100%;
     padding: 12px;
   }
+}
+
+.back-button {
+  background: none;
+  border: none;
+  color: #111;
+  font-size: 1rem;
+  margin-bottom: 24px;
+  cursor: pointer;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  padding: 0;
+  transition: color 0.2s ease;
+}
+
+.back-button:hover {
+  color: #000;
 }

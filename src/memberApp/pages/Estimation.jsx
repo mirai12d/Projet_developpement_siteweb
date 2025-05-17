@@ -3,6 +3,7 @@ import './Estimation.css';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link, useNavigate } from 'react-router-dom';
 
 const examples = [
   {
@@ -34,6 +35,7 @@ const examples = [
 const Estimation = () => {
   const [selectedExample, setSelectedExample] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     nom: '',
@@ -86,6 +88,13 @@ const Estimation = () => {
 
   return (
     <div className="estimation-container">
+      <div style={{ textAlign: 'left' }}>
+  <button className="back-button" onClick={() => navigate('/dashboard')}>
+    ← Retour au tableau de bord
+  </button>
+</div>
+
+
       <h2>Obtenez une estimation personnalisée</h2>
       <p className="estimation-subtitle">Choisissez un exemple de site, puis décrivez votre besoin.</p>
 
@@ -130,9 +139,9 @@ const Estimation = () => {
 
       <p style={{ textAlign: 'center', marginTop: '24px', fontSize: '0.9rem' }}>
         Vous préférez discuter directement ?&nbsp;
-        <a href="/member/reservation" style={{ color: '#111', textDecoration: 'underline' }}>
+        <Link to="/reservation" style={{ color: '#111', textDecoration: 'underline' }}>
           Réservez un appel ou une rencontre ici
-        </a>
+        </Link>
       </p>
 
       <ToastContainer position="bottom-right" autoClose={3000} />

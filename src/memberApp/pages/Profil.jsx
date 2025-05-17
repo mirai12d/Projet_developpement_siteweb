@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useLocation, useSearchParams, useNavigate } from 'react-router-dom';
 import MemberLayout from '../../layouts/MemberLayout';
 import './Profil.css';
-import { Mail, Package, Wrench, UserCircle, ArrowLeft } from 'lucide-react';
+import { Mail, Wrench, UserCircle, ArrowLeft } from 'lucide-react';
 
 const Profil = () => {
   const prenom = localStorage.getItem('userPrenom') || 'Utilisateur';
@@ -98,7 +98,6 @@ const Profil = () => {
             <button onClick={() => setOngletActif('compte')} className={ongletActif === 'compte' ? 'actif' : ''}>Mon compte</button>
             <button onClick={() => setOngletActif('securite')} className={ongletActif === 'securite' ? 'actif' : ''}>Sécurité</button>
             <button onClick={() => setOngletActif('factures')} className={ongletActif === 'factures' ? 'actif' : ''}>Factures</button>
-            <button onClick={() => setOngletActif('commandes')} className={ongletActif === 'commandes' ? 'actif' : ''}>Commandes</button>
             <button onClick={() => setOngletActif('paiements')} className={ongletActif === 'paiements' ? 'actif' : ''}>Paiements</button>
             <button onClick={() => setOngletActif('support')} className={ongletActif === 'support' ? 'actif' : ''}>Support</button>
           </aside>
@@ -132,13 +131,6 @@ const Profil = () => {
                     <div>
                       <h4>Email</h4>
                       <p>{email}</p>
-                    </div>
-                  </div>
-                  <div className="summary-block">
-                    <Package size={20} />
-                    <div>
-                      <h4>Dernière commande</h4>
-                      <p>Aucune commande récente</p>
                     </div>
                   </div>
                   <div className="summary-block">
@@ -188,13 +180,6 @@ const Profil = () => {
                   <div>
                     <h2>Mes factures</h2>
                     <p>Vous n'avez pas encore de factures disponibles.</p>
-                  </div>
-                )}
-
-                {ongletActif === 'commandes' && (
-                  <div>
-                    <h2>Mes commandes</h2>
-                    <p>Aucune commande enregistrée pour le moment.</p>
                   </div>
                 )}
 

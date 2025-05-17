@@ -1,0 +1,160 @@
+.factures-container {
+  padding: 100px 60px 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+  font-family: 'Poppins', sans-serif;
+  background-color: #fff;
+  min-height: 100vh; /* ✅ Évite centrage vertical */
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.factures-container h1 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.factures-subtitle {
+  font-size: 1.05rem;
+  color: #666;
+  margin: 0 auto 36px auto;
+  text-align: center;
+  max-width: 700px;
+}
+
+.factures-loading,
+.factures-empty {
+  font-size: 1rem;
+  color: #999;
+  margin-top: 24px;
+  text-align: center;
+}
+
+.factures-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.facture-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f9f9f9;
+  padding: 20px 24px;
+  border-radius: 14px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.04);
+  gap: 24px;
+}
+
+.facture-icon {
+  background-color: #eaeaea;
+  border-radius: 10px;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 48px;
+}
+
+.facture-details {
+  flex: 1;
+}
+
+.facture-details h4 {
+  margin: 0 0 6px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #111;
+}
+
+.facture-details p {
+  margin: 2px 0;
+  font-size: 0.95rem;
+  color: #555;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.facture-button {
+  padding: 10px 16px;
+  background-color: #111;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+  white-space: nowrap;
+}
+
+.facture-button:hover {
+  background-color: #333;
+}
+
+/* === Bouton retour dashboard === */
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #111;
+  background-color: #f3f3f3;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.back-button:hover {
+  background-color: #eaeaea;
+  border-color: #ccc;
+}
+
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .factures-container {
+    padding: 140px 20px 40px; /* plus d'espace sous le header */
+  }
+
+
+  .factures-container h1 {
+    font-size: 1.8rem;
+  }
+
+  .factures-subtitle {
+    font-size: 0.95rem;
+    margin: 0 auto 24px auto;
+  }
+
+  .facture-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 18px;
+  }
+
+  .facture-details h4 {
+    font-size: 1rem;
+  }
+
+  .facture-details p {
+    font-size: 0.9rem;
+  }
+
+  .facture-button {
+    align-self: stretch;
+    text-align: center;
+    width: 100%;
+    padding: 12px;
+  }
+}

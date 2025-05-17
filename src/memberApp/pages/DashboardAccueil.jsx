@@ -4,7 +4,7 @@ import MemberLayout from '../../layouts/MemberLayout';
 import './DashboardAccueil.css';
 import { motion } from 'framer-motion';
 import Modal from 'react-modal';
-import { Calendar, FileText, Mail, Package, Wrench, Pin } from 'lucide-react';
+import { Calendar, FileText, Mail, Wrench, Pin } from 'lucide-react';
 
 Modal.setAppElement('#root');
 
@@ -82,13 +82,6 @@ const DashboardAccueil = () => {
             <div>
               <h4>Email</h4>
               <p>{email}</p>
-            </div>
-          </div>
-          <div className="summary-block">
-            <Package size={20} />
-            <div>
-              <h4>Dernière commande</h4>
-              <p>Aucune commande récente</p>
             </div>
           </div>
           <div className="summary-block">

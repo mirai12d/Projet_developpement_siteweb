@@ -3,7 +3,7 @@
   max-width: 1500px;
   margin: 60px auto;
   padding: 30px;
-  padding-top: 100px;
+  padding-top: 20px;
   background: white;
   border-radius: 16px;
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
@@ -328,4 +328,21 @@
     opacity: 1;
     transform: scale(1);
   }
+}
+.back-button {
+  background: none;
+  border: 1px solid #ccc;
+  padding: 10px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  margin-bottom: 24px;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+  display: inline-block;
+  text-align: left;
+}
+
+.back-button:hover {
+  background-color: #f2f2f2;
 }
