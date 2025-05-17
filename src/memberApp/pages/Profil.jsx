@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useLocation, useSearchParams, useNavigate } from 'react-router-dom';
 import MemberLayout from '../../layouts/MemberLayout';
 import './Profil.css';
+import { Mail, Package, Wrench, UserCircle, ArrowLeft } from 'lucide-react';
 
 const Profil = () => {
   const prenom = localStorage.getItem('userPrenom') || 'Utilisateur';
@@ -106,16 +107,19 @@ const Profil = () => {
         <section className="profil-main">
           <div className="dashboard-container">
             <button className="back-button" onClick={() => navigate('/dashboard')}>
-              ← Retour au tableau de bord
+              <ArrowLeft size={16} style={{ marginRight: 6 }} />
+              Retour au tableau de bord
             </button>
 
             {!afficherSettings ? (
               <>
                 <h2 className="profil-title">Mon profil</h2>
-                <p className="profil-subtitle">Bienvenue {prenom} {nom} 👋</p>
+                <p className="profil-subtitle">Bienvenue {prenom} {nom}</p>
 
                 <div className="profil-header-card">
-                  <div className="avatar-placeholder">👤</div>
+                  <div className="avatar-placeholder">
+                    <UserCircle size={32} />
+                  </div>
                   <div>
                     <h3>{prenom} {nom}</h3>
                     <p>{email}</p>
@@ -124,21 +128,21 @@ const Profil = () => {
 
                 <div className="dashboard-summary">
                   <div className="summary-block">
-                    <span>📧</span>
+                    <Mail size={20} />
                     <div>
                       <h4>Email</h4>
                       <p>{email}</p>
                     </div>
                   </div>
                   <div className="summary-block">
-                    <span>📦</span>
+                    <Package size={20} />
                     <div>
                       <h4>Dernière commande</h4>
                       <p>Aucune commande récente</p>
                     </div>
                   </div>
                   <div className="summary-block">
-                    <span>🛠️</span>
+                    <Wrench size={20} />
                     <div>
                       <h4>Support</h4>
                       <p>0 ticket(s) ouvert(s)</p>

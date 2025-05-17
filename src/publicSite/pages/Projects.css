@@ -1,5 +1,4 @@
-/* Projects.css */
-
+/* ===== SECTION PROJECTS ===== */
 .projects {
   padding: 80px 40px;
   background-color: #f8f8f8;
@@ -12,6 +11,7 @@
   font-size: 2.8rem;
   margin-bottom: 16px;
   font-weight: 700;
+  color: #111;
 }
 
 .projects-intro {
@@ -20,8 +20,10 @@
   margin: 0 auto 48px;
   font-size: 1.1rem;
   color: #555;
+  line-height: 1.6;
 }
 
+/* ===== GRID ===== */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -29,6 +31,7 @@
   padding: 0 20px;
 }
 
+/* ===== CARD ===== */
 .project-card {
   background-color: #fff;
   border-radius: 18px;
@@ -64,4 +67,40 @@
   margin: 0 20px 20px;
   color: #555;
   line-height: 1.5;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .projects {
+    padding: 60px 20px;
+     padding-top: 100px !important;
+  }
+
+  .projects h2 {
+    font-size: 2.2rem;
+  }
+
+  .projects-intro {
+    font-size: 1rem;
+    margin-bottom: 36px;
+  }
+
+  .projects-grid {
+    gap: 24px;
+    padding: 0;
+  }
+
+  .project-card h3 {
+    font-size: 1.15rem;
+    margin: 14px 16px 6px;
+  }
+
+  .project-card p {
+    font-size: 0.95rem;
+    margin: 0 16px 16px;
+  }
+
+  .project-card img {
+    height: 160px;
+  }
 }

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jane Smith | Photographe</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --black: #111;
+      --gray: #555;
+      --light: #f5f5f5;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: var(--black);
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 28px 64px;
+      background: #fff;
+      border-bottom: 1px solid #eaeaea;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      font-weight: 600;
+      font-size: 0.95rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    nav {
+      display: flex;
+      gap: 40px;
+    }
+
+    nav a {
+      text-decoration: none;
+      font-weight: 500;
+      color: var(--black);
+      font-size: 0.95rem;
+    }
+
+    .hero {
+      position: relative;
+      height: 100vh;
+      background-image: url('https://images.unsplash.com/photo-1636581563669-574d8a22ae4b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      padding: 20px;
+      animation: fadeIn 1.2s ease-out forwards;
+    }
+
+    .hero-content h1 {
+      font-size: 3.6rem;
+      margin-bottom: 24px;
+      letter-spacing: -1px;
+      line-height: 1.2;
+    }
+
+    .hero-content button {
+      background: none;
+      color: white;
+      border: 2px solid white;
+      padding: 12px 28px;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .hero-content button:hover {
+      background: white;
+      color: #111;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .intro {
+      background: var(--light);
+      padding: 80px 64px;
+      text-align: center;
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: #333;
+      line-height: 1.8;
+    }
+
+    .intro span {
+      display: block;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px;
+      font-size: 0.85rem;
+      color: var(--gray);
+      background: var(--light);
+    }
+
+    @media (max-width: 900px) {
+      header {
+        flex-direction: column;
+        gap: 16px;
+        padding: 24px;
+      }
+
+      nav {
+        gap: 24px;
+      }
+
+      .hero-content h1 {
+        font-size: 2.4rem;
+      }
+
+      .intro {
+        padding: 48px 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">JANE SMITH</div>
+    <nav>
+      <a href="#">Accueil</a>
+      <a href="#">À propos</a>
+      <a href="#">Galerie</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>CAPTUREZ<br>L’INSTANT</h1>
+      <button>EN SAVOIR PLUS</button>
+    </div>
+  </section>
+
+  <section class="intro">
+    <span>
+      Bienvenue sur mon site de photographie. Je saisis l’instant et l’émotion à travers des portraits inoubliables, capturés avec discrétion, justesse et intensité.
+    </span>
+  </section>
+
+  <footer>
+    &copy; 2025 Jane Smith — Tous droits réservés.
+  </footer>
+</body>
+</html>

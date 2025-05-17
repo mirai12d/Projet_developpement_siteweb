@@ -1,81 +1,114 @@
+/* ===== CONTAINER ===== */
 .support-container {
-    max-width: 600px;
-    margin: 60px auto;
-    padding: 30px;
-    padding-top: 100px;
-    background: white;
-    border-radius: 16px;
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
-    text-align: center;
-    font-family: 'Poppins', sans-serif;
+  max-width: 600px;
+  margin: 60px auto;
+  padding: 30px;
+  padding-top: 100px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* ===== TITRE ===== */
+.support-container h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 10px;
+}
+
+/* ===== SOUS-TITRE ===== */
+.support-subtitle {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 30px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+/* ===== FORMULAIRE ===== */
+.support-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.support-form input,
+.support-form textarea {
+  padding: 12px 16px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-family: inherit;
+  background-color: #fafafa;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.support-form input:focus,
+.support-form textarea:focus {
+  outline: none;
+  border-color: #111;
+  background-color: #fff;
+}
+
+.support-form input[disabled] {
+  background-color: #f0f0f0;
+  color: #888;
+  cursor: not-allowed;
+}
+
+.support-form textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* ===== BOUTON ===== */
+.support-form button {
+  padding: 14px 20px;
+  background-color: #111;
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.support-form button:hover {
+  background-color: #333;
+  transform: translateY(-2px);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 600px) {
+  .support-container {
+    margin: 40px 16px;
+    padding: 24px 20px 40px;
+    padding-top: 80px;
   }
-  
+
   .support-container h2 {
-    font-size: 2.2rem;
-    font-weight: 700;
-    color: #111;
-    margin-bottom: 10px;
+    font-size: 1.8rem;
   }
-  
+
   .support-subtitle {
-    font-size: 1rem;
-    color: #555;
-    margin-bottom: 30px;
-    max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 1.6;
+    font-size: 0.95rem;
+    margin-bottom: 24px;
   }
-  
-  .support-form {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-  }
-  
+
   .support-form input,
   .support-form textarea {
-    padding: 12px 16px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    font-size: 1rem;
-    font-family: inherit;
-    background-color: #fafafa;
-    transition: border-color 0.2s ease, background-color 0.2s ease;
+    font-size: 0.95rem;
+    padding: 12px;
   }
-  
-  .support-form input:focus,
-  .support-form textarea:focus {
-    outline: none;
-    border-color: #111;
-    background-color: #fff;
-  }
-  
-  .support-form input[disabled] {
-    background-color: #f0f0f0;
-    color: #888;
-    cursor: not-allowed;
-  }
-  
-  .support-form textarea {
-    resize: vertical;
-    min-height: 120px;
-  }
-  
+
   .support-form button {
-    padding: 14px 20px;
-    background-color: #111;
-    color: white;
-    font-weight: 600;
-    border: none;
-    border-radius: 10px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-size: 0.95rem;
+    padding: 12px;
   }
-  
-  .support-form button:hover {
-    background-color: #333;
-    transform: translateY(-2px);
-  }
-  
+}

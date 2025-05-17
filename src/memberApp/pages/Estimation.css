@@ -1,5 +1,6 @@
+/* ====== Container Principal ====== */
 .estimation-container {
-  max-width: 600px;
+  max-width: 1500px;
   margin: 60px auto;
   padding: 30px;
   padding-top: 100px;
@@ -27,10 +28,12 @@
   line-height: 1.6;
 }
 
+/* ====== Formulaire ====== */
 .estimation-form {
   display: flex;
   flex-direction: column;
   gap: 18px;
+  margin-top: 40px;
 }
 
 .estimation-form input,
@@ -73,4 +76,256 @@
 .estimation-form button:hover {
   background-color: #333;
   transform: translateY(-2px);
+}
+
+/* ====== Grid de modèles ====== */
+.examples-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 24px;
+  margin: 40px 0;
+}
+
+.example-card {
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: 0.3s;
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  perspective: 800px;
+}
+
+.example-card:hover img {
+  transform: scale(1.05);
+}
+
+.example-card.selected {
+  border-color: #111;
+  box-shadow: 0 0 0 3px #111;
+}
+
+.example-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.example-card h3 {
+  margin: 12px 0 6px;
+  font-size: 1.1rem;
+}
+
+.example-card p {
+  padding: 0 12px 16px;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* ====== Aperçu sélectionné ====== */
+.example-preview {
+  margin-top: 40px;
+  padding: 24px;
+  background: #fafafa;
+  border: 1px solid #e2e2e2;
+  border-radius: 16px;
+  text-align: center;
+  animation: fadeIn 0.4s ease;
+}
+
+.iframe-wrapper {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  margin: 24px 0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.preview-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* ====== Explorer bouton ====== */
+.explore-button {
+  padding: 10px 20px;
+  background-color: #111;
+  color: white;
+  font-weight: 500;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.explore-button:hover {
+  background-color: #333;
+  transform: translateY(-1px);
+}
+
+.explore-button.secondary {
+  background-color: #555;
+}
+
+.explore-button.secondary:hover {
+  background-color: #333;
+}
+
+/* ====== Modal plein écran ====== */
+.fullscreen-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(17, 17, 17, 0.75);
+  backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 20px;
+}
+
+.modal-content {
+  position: relative;
+  width: 100%;
+  max-width: 1080px;
+  height: 90%;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #000;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+  animation: scaleFadeIn 0.4s ease;
+}
+
+.modal-close {
+  position: absolute;
+  top: 14px;
+  right: 20px;
+  font-size: 2rem;
+  color: white;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.modal-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* ====== Responsive ====== */
+@media (max-width: 768px) {
+  .estimation-container {
+    margin: 20px 10px;
+    padding: 20px;
+    border-radius: 12px;
+     padding-top: 100px !important;
+  }
+
+  .estimation-container h2 {
+    font-size: 1.8rem;
+  }
+
+  .estimation-subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 24px;
+  }
+
+  .estimation-form {
+    gap: 14px;
+    margin-top: 30px;
+  }
+
+  .estimation-form input,
+  .estimation-form select,
+  .estimation-form textarea {
+    font-size: 0.95rem;
+    padding: 10px 14px;
+  }
+
+  .estimation-form button {
+    font-size: 1rem;
+    padding: 12px;
+  }
+
+  .examples-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .example-card img {
+    height: 140px;
+  }
+
+  .example-card h3 {
+    font-size: 1rem;
+  }
+
+  .example-card p {
+    font-size: 0.85rem;
+  }
+
+  .iframe-wrapper {
+    height: 220px;
+  }
+
+  .example-preview {
+    padding: 16px;
+    margin-top: 30px;
+  }
+
+  .fullscreen-modal {
+    padding: 10px;
+  }
+
+  .modal-content {
+    height: 80%;
+    border-radius: 10px;
+  }
+
+  .modal-close {
+    font-size: 1.6rem;
+    top: 10px;
+    right: 14px;
+  }
+
+  .explore-button {
+    padding: 10px 16px;
+    font-size: 0.95rem;
+    border-radius: 6px;
+  }
+}
+
+/* ====== Animations ====== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }

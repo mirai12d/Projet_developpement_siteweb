@@ -1,27 +1,44 @@
+/* ===== BOUTON DE SCROLL TOP ===== */
 .scroll-button {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    background-color: #1b1b1b;
-    border: none;
-    border-radius: 50%;
-    width: 48px;
-    height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-    z-index: 999;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: #1b1b1b;
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  z-index: 999;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.scroll-button:hover {
+  background-color: #000;
+  transform: translateY(-2px);
+}
+
+.scroll-button svg {
+  stroke: white;
+  width: 24px;
+  height: 24px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 600px) {
+  .scroll-button {
+    width: 42px;
+    height: 42px;
+    bottom: 20px;
+    right: 20px;
   }
-  
-  .scroll-button:hover {
-    background-color: #000;
-    transform: translateY(-2px);
-  }
-  
+
   .scroll-button svg {
-    stroke: white;
+    width: 20px;
+    height: 20px;
   }
-  
+}

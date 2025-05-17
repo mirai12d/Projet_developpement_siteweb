@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MODE — Boutique en ligne</title>
+  <style>
+    :root {
+      --bg: #fff;
+      --text: #111;
+      --gray: #666;
+      --light: #f8f8f8;
+      --accent: #111;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      padding: 24px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--bg);
+      border-bottom: 1px solid #eee;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      font-size: 1.6rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    nav {
+      display: flex;
+      gap: 32px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text);
+      font-size: 1rem;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    nav a:hover {
+      color: var(--gray);
+    }
+
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      background: #f8f5f2;
+      padding: 80px 48px;
+    }
+
+    .hero-text {
+      max-width: 600px;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 1.05rem;
+      color: var(--gray);
+      margin-bottom: 24px;
+    }
+
+    .hero button {
+      background: none;
+      border: 2px solid var(--text);
+      padding: 12px 24px;
+      font-weight: 600;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: background 0.3s;
+    }
+
+    .hero button:hover {
+      background: var(--text);
+      color: white;
+    }
+
+    .hero img {
+      width: 320px;
+      border-radius: 16px;
+      object-fit: cover;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      padding: 60px 48px;
+      background: var(--bg);
+    }
+
+    .promo, .card {
+      background: #f5f5f5;
+      padding: 32px;
+      text-align: center;
+      border-radius: 14px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .promo h2 {
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+
+    .promo p {
+      color: var(--gray);
+      margin-bottom: 16px;
+    }
+
+    .promo button {
+      background: none;
+      border: 2px solid var(--text);
+      padding: 12px 24px;
+      font-weight: 600;
+      cursor: pointer;
+      border-radius: 6px;
+    }
+
+    .promo button:hover {
+      background: var(--text);
+      color: white;
+    }
+
+    .card img {
+      width: 140px;
+      height: auto;
+      margin-bottom: 14px;
+      border-radius: 8px;
+    }
+
+    .card h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    footer {
+      padding: 40px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #777;
+      background: #f0f0f0;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+      }
+
+      .hero img {
+        margin-bottom: 24px;
+        width: 100%;
+        max-width: 300px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">MODE</div>
+    <nav>
+      <a href="#">Nouveautés</a>
+      <a href="#">Femmes</a>
+      <a href="#">Hommes</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-text">
+      <h1>NOUVELLE COLLECTION</h1>
+      <p>DÉCOUVREZ LES DERNIÈRES TENDANCES</p>
+      <button>VOIR PLUS</button>
+    </div>
+    <img src="https://res.cloudinary.com/ssenseweb/image/upload/w_768,q_90,f_auto,dpr_auto/v1744900928/xkxec5j2cayexg8ozam5.jpg" alt="Nouvelle collection">
+  </section>
+
+  <section class="grid">
+    <div class="promo">
+      <h2>-30%</h2>
+      <p>POUR LES MEMBRES</p>
+      <button>EN PROFITER</button>
+    </div>
+
+    <div class="card">
+  <img src="https://images.unsplash.com/photo-1614179689702-355944cd0918?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="sac à main" />
+  <h3>SACS</h3>
+</div>
+
+<div class="card">
+  <img src="https://images.unsplash.com/photo-1601379327928-bedfaf9da2d0?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="pull beige" />
+  <h3>PULLS</h3>
+</div>
+
+  </section>
+
+  <footer>
+    &copy; 2025 MODESHOP – Tous droits réservés
+  </footer>
+</body>
+</html>

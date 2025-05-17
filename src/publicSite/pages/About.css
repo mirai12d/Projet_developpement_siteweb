@@ -1,8 +1,10 @@
+/* ===== SECTION À PROPOS ===== */
 .about {
   padding: 100px 40px;
   background-color: #f9f9f9;
   color: #111;
   text-align: center;
+  font-family: 'Poppins', sans-serif;
 }
 
 .about-content {
@@ -24,10 +26,11 @@
   margin-bottom: 20px;
 }
 
-/* Responsive */
+/* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
   .about {
     padding: 60px 20px;
+     padding-top: 100px !important;
   }
 
   .about h2 {
@@ -35,6 +38,7 @@
   }
 
   .about p {
-    font-size: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.7;
   }
 }

@@ -1,15 +1,19 @@
+/* ===== SECTION SERVICES ===== */
 .services {
   padding: 80px 40px;
   background: #f7f7f7;
   text-align: center;
+  font-family: 'Poppins', sans-serif;
 }
 
 .services h2 {
   font-size: 2.6rem;
   margin-bottom: 40px;
   font-weight: 700;
+  color: #111;
 }
 
+/* ===== GRILLE ===== */
 .services-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -18,17 +22,19 @@
   margin: 0 auto;
 }
 
+/* ===== CARD ===== */
 .service-card {
   background: #fff;
   padding: 32px 24px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
   border-radius: 14px;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   text-align: left;
 }
 
 .service-card:hover {
   transform: translateY(-6px);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.08);
 }
 
 .service-icon {
@@ -47,10 +53,45 @@
   font-size: 1.25rem;
   margin-bottom: 12px;
   font-weight: 600;
+  color: #111;
 }
 
 .service-card p {
   font-size: 0.95rem;
   color: #444;
   line-height: 1.6;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .services {
+    padding: 60px 20px;
+     padding-top: 100px !important;
+  }
+
+  .services h2 {
+    font-size: 2.1rem;
+    margin-bottom: 30px;
+  }
+
+  .services-list {
+    gap: 24px;
+  }
+
+  .service-card {
+    padding: 28px 20px;
+  }
+
+  .service-card h3 {
+    font-size: 1.15rem;
+  }
+
+  .service-card p {
+    font-size: 0.9rem;
+  }
+
+  .service-icon {
+    width: 36px;
+    height: 36px;
+  }
 }

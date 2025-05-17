@@ -1,75 +1,36 @@
 /* ===== RESERVATION CONTAINER ===== */
 .reservation-container {
   padding: 60px 40px;
-  max-width: 1200px;
+  max-width: 1500px;
   margin: auto;
   background-color: #fff;
-  border-radius: 16px;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.05);
+  border-radius: 20px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.06);
   font-family: 'Poppins', sans-serif;
 }
 
 .reservation-container h1 {
-  font-size: 2.4rem;
+  font-size: 2.6rem;
   font-weight: 700;
   color: #111;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   text-align: center;
 }
 
 .reservation-container .subtitle {
-  font-size: 1.1rem;
-  color: #555;
-  margin-bottom: 36px;
+  font-size: 1.15rem;
+  color: #666;
+  margin-bottom: 40px;
   text-align: center;
 }
 
 /* ===== CALENDAR WRAPPER ===== */
 .calendar-wrapper {
-  border-radius: 14px;
+  border-radius: 16px;
   overflow: hidden;
-  background-color: #fafafa;
-  padding: 20px;
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.04);
-}
-
-/* ===== FULLCALENDAR GRID STYLE ===== */
-/* lignes d’heures horizontales */
-.calendar-wrapper .fc .fc-timegrid-slot-lane {
-  border-bottom: 1px solid #e5e5e5;
-}
-.calendar-wrapper .fc .fc-timegrid-slot-lane:nth-child(even) {
-  background-color: #f8f8f8;
-}
-
-/* en-têtes de ligne horaire (axe des heures) */
-.calendar-wrapper .fc .fc-timegrid-axis .fc-timegrid-slot-label-cushion {
-  border-top: 1px solid #e5e5e5;
-  padding-top: 4px;
-}
-
-/* en-têtes de jours */
-.calendar-wrapper .fc .fc-col-header-cell-cushion {
-  font-weight: 500;
-  color: #333;
-  background: #fff;
-  padding: 8px 0;
-  border-bottom: 1px solid #e5e5e5;
-}
-
-/* ===== LIGNES VERTICALES ENTRE JOURS ===== */
-.calendar-wrapper .fc .fc-col-header-cell {
-  border-right: 1px solid #e5e5e5;
-}
-.calendar-wrapper .fc .fc-col-header-cell:last-child {
-  border-right: none;
-}
-
-.calendar-wrapper .fc .fc-timegrid-col {
-  border-right: 1px solid #e5e5e5;
-}
-.calendar-wrapper .fc .fc-timegrid-col:last-child {
-  border-right: none;
+  background-color: #fcfcfc;
+  padding: 20px 20px 10px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.04);
 }
 
 /* ===== HEADER TOOLBAR ===== */
@@ -83,7 +44,7 @@
   background-color: #111;
   color: #fff;
   border: none;
-  padding: 6px 12px;
+  padding: 8px 16px;
   font-size: 0.9rem;
   border-radius: 8px;
   transition: background-color 0.3s ease;
@@ -95,25 +56,66 @@
   background-color: #000;
 }
 
-/* ===== EVENTS ===== */
-.calendar-wrapper .fc .fc-event {
-  border-radius: 8px !important;
-  padding: 4px 6px !important;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1) !important;
+/* ===== CALENDAR HEADERS ===== */
+.calendar-wrapper .fc .fc-col-header-cell-cushion {
+  font-weight: 600;
+  color: #222;
+  background: #fff;
+  padding: 10px 0;
+  font-size: 1rem;
 }
 
-/* ===== MODAL OVERLAY ===== */
-.reservation-overlay {
-  background-color: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(4px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
+/* ===== TIMEGRID SLOTS (HEURES) ===== */
+.calendar-wrapper .fc .fc-timegrid-slot {
+  border-bottom: 1px solid #e6e6e6;
+}
+.calendar-wrapper .fc .fc-timegrid-slot:nth-child(even) {
+  background-color: #f9f9f9;
+}
+.calendar-wrapper .fc .fc-timegrid-slot-label-cushion {
+  font-size: 0.85rem;
+  color: #999;
+  padding-top: 6px;
+}
+
+/* ===== JOUR (COLONNES) ===== */
+.calendar-wrapper .fc .fc-timegrid-col {
+  border-right: 1px solid #e4e4e4;
+}
+.calendar-wrapper .fc .fc-timegrid-col:last-child {
+  border-right: none;
+}
+
+/* ===== EVENTS ===== */
+.calendar-wrapper .fc .fc-event {
+  background-color: #ddd !important;
+  color: #111 !important;
+  border-radius: 10px !important;
+  border: none !important;
+  padding: 4px 8px !important;
+  font-size: 0.85rem !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08) !important;
+  transition: transform 0.15s ease;
+}
+.calendar-wrapper .fc .fc-event:hover {
+  transform: scale(1.02);
+  background-color: #cfcfcf !important;
+}
+
+/* ===== TODAY HIGHLIGHT ===== */
+.calendar-wrapper .fc .fc-day-today {
+  background-color: #eaeaff !important;
+}
+
+/* ===== BORDER RADIUS CORRECTION ===== */
+.calendar-wrapper .fc .fc-scrollgrid {
+  border-radius: 12px;
+  overflow: hidden;
 }
 
 /* ===== MODAL BOX ===== */
-.reservation-modal {
+.reservation-modal,
+.ReactModal__Content {
   background: white;
   border-radius: 16px;
   padding: 40px;
@@ -138,7 +140,8 @@
 }
 
 /* ===== FORM FIELDS ===== */
-.reservation-modal input {
+.reservation-modal input,
+.ReactModal__Content input {
   width: 100%;
   display: block;
   padding: 12px 16px;
@@ -149,7 +152,8 @@
   background-color: #fafafa;
   transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
-.reservation-modal input:focus {
+.reservation-modal input:focus,
+.ReactModal__Content input:focus {
   border-color: #888;
   box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.05);
 }
@@ -184,4 +188,73 @@
 }
 .cancel-btn:hover {
   background-color: #ddd;
+}
+
+/* ===== STRUCTURE / ZÉBRAGE / LIGNES ===== */
+.calendar-wrapper .fc .fc-timegrid-body table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+.calendar-wrapper .fc .fc-timegrid-body .fc-timegrid-col {
+  box-shadow: inset -1px 0 0 #e0e0e0;
+}
+.calendar-wrapper .fc .fc-timegrid-body td:first-child {
+  border-left: 1px solid #ddd !important;
+}
+.calendar-wrapper .fc .fc-timegrid-slot {
+  border-bottom: 1px solid #efefef !important;
+}
+.calendar-wrapper .fc .fc-timegrid-col:nth-child(even) {
+  background-color: #fcfcfc;
+}
+.calendar-wrapper .fc .fc-timegrid-col:nth-child(odd) {
+  background-color: #f7f7f7;
+}
+.calendar-wrapper .fc .fc-timegrid-body > table > tbody > tr > td {
+  border-right: 1px solid #e5e5e5;
+}
+.calendar-wrapper .fc .fc-timegrid-body > table > tbody > tr > td:last-child {
+  border-right: none;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .reservation-container {
+    padding: 30px 20px;
+     padding-top: 100px !important;
+  }
+
+  .reservation-container h1 {
+    font-size: 2rem;
+  }
+
+  .reservation-container .subtitle {
+    font-size: 1rem;
+    margin-bottom: 30px;
+  }
+
+  .calendar-wrapper {
+    padding: 12px;
+  }
+
+  .reservation-modal,
+  .ReactModal__Content {
+    padding: 24px;
+    border-radius: 12px;
+  }
+
+  .reservation-modal h2 {
+    font-size: 1.5rem;
+  }
+
+  .modal-actions {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .confirm-btn,
+  .cancel-btn {
+    width: 100%;
+    padding: 12px;
+  }
 }

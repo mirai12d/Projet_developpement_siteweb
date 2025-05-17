@@ -58,11 +58,11 @@ const Login = () => {
 
   return (
     <div className="auth-container">
-     <div className="auth-avatar">
-  <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M20 21v-2a4 4 0 0 0-3-3.87M4 21v-2a4 4 0 0 1 3-3.87M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" />
-  </svg>
-</div>
+      <div className="auth-avatar">
+        <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M20 21v-2a4 4 0 0 0-3-3.87M4 21v-2a4 4 0 0 1 3-3.87M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" />
+        </svg>
+      </div>
 
       <h2 className="auth-title">Connexion</h2>
       <p className="auth-subtitle">Accédez à votre espace membre personnalisé.</p>
@@ -82,12 +82,14 @@ const Login = () => {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <button type="submit">Se connecter</button>
-      </form>
 
-      {message && (
-        <p className={`message ${success ? 'success' : 'error'}`}>{message}</p>
-      )}
+        <div className="form-footer">
+          <button type="submit">Se connecter</button>
+          {message && (
+            <p className={`message ${success ? 'success' : 'error'}`}>{message}</p>
+          )}
+        </div>
+      </form>
 
       <p className="switch-auth">
         Pas encore de compte ?{' '}

@@ -1,46 +1,40 @@
+/* ===== BARRE FIXE EN BAS ===== */
 .bottom-bar {
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #333;
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    padding: 10px 16px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-    z-index: 999;
-  }
-  
-  .bottom-logo {
-    background: #1b1b1b;
-    color: #fff;
-    font-weight: 700;
-    font-size: 1.3rem;
-    border-radius: 12px;
-    padding: 12px 20px;
-    margin-right: 10px;
-  }
-  
-  .bottom-links {
-    display: flex;
-    gap: 10px;
-  }
-  
-  .bottom-links a {
-    color: #fff;
-    background: #444;
-    padding: 10px 16px;
-    border-radius: 12px;
-    text-decoration: none;
-    font-size: 0.95rem;
-    transition: background 0.2s ease;
-  }
-  
-  .bottom-links a:hover {
-    background: #1b7f79;
-  }
-  .bottom-links a,
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  padding: 10px 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+  max-width: 95%;
+  flex-wrap: wrap;
+}
+
+/* ===== LOGO À GAUCHE ===== */
+.bottom-logo {
+  background: #1b1b1b;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.3rem;
+  border-radius: 12px;
+  padding: 12px 20px;
+  margin-right: 10px;
+  white-space: nowrap;
+}
+
+/* ===== LIENS & BOUTONS ===== */
+.bottom-links {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.bottom-links a,
 .bottom-links button {
   color: #fff;
   background: #444;
@@ -57,9 +51,39 @@
 .bottom-links button:hover {
   background: #1b7f79;
 }
+
 .bottom-links button.active {
   background-color: #fff;
   color: #111;
   font-weight: 600;
   border-radius: 10px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 600px) {
+  .bottom-bar {
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px;
+    border-radius: 16px;
+  }
+
+  .bottom-logo {
+    font-size: 1.1rem;
+    padding: 10px 16px;
+    margin-right: 0;
+  }
+
+  .bottom-links {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .bottom-links a,
+  .bottom-links button {
+    font-size: 0.9rem;
+    padding: 10px 12px;
+    flex: 1;
+    text-align: center;
+  }
 }

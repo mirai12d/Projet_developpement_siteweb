@@ -77,10 +77,10 @@ const Signup = () => {
   return (
     <div className="auth-container">
       <div className="auth-avatar">
-  <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M20 21v-2a4 4 0 0 0-3-3.87M4 21v-2a4 4 0 0 1 3-3.87M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" />
-  </svg>
-</div>
+        <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#111" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M20 21v-2a4 4 0 0 0-3-3.87M4 21v-2a4 4 0 0 1 3-3.87M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" />
+        </svg>
+      </div>
 
       <h2>Inscription</h2>
       <form onSubmit={handleSubmit} noValidate>
@@ -102,12 +102,13 @@ const Signup = () => {
         <input type="tel" name="telephone" placeholder="Téléphone" onChange={handleChange} />
         <input type="text" name="entreprise" placeholder="Entreprise (facultatif)" onChange={handleChange} />
 
-        <button type="submit">Créer un compte</button>
+        <div className="form-footer">
+          <button type="submit">Créer un compte</button>
+          {message && (
+            <p className={`message ${success ? 'success' : 'error'}`}>{message}</p>
+          )}
+        </div>
       </form>
-
-      {message && (
-        <p className={`message ${success ? 'success' : 'error'}`}>{message}</p>
-      )}
 
       <p className="switch-auth">
         Vous avez déjà un compte ?{' '}

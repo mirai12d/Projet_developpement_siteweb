@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Votre entreprise – Corporate</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #111111;
+      --gray: #555555;
+      --light: #f7f7f7;
+      --accent: #1a1a1a;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    header {
+      padding: 24px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #fff;
+      border-bottom: 1px solid #eee;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 1.4rem;
+      font-weight: 600;
+    }
+
+    nav {
+      display: flex;
+      gap: 32px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text);
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .hero {
+      background-image: url("https://plus.unsplash.com/premium_photo-1722945691720-7be9a171f3bc?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      padding: 120px 48px 100px;
+      text-align: left;
+      color: #fff;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      max-width: 700px;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    .services {
+      padding: 80px 48px;
+      background: var(--light);
+      text-align: center;
+    }
+
+    .services h2 {
+      font-size: 2rem;
+      margin-bottom: 40px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 32px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .service {
+      background: #fff;
+      border-radius: 14px;
+      padding: 28px 20px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease;
+    }
+
+    .service:hover {
+      transform: translateY(-4px);
+    }
+
+    .service svg {
+      width: 32px;
+      height: 32px;
+      margin-bottom: 16px;
+      fill: var(--text);
+    }
+
+    .service h3 {
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+
+    .service p {
+      font-size: 0.9rem;
+      color: var(--gray);
+    }
+
+    footer {
+      background: #f2f2f2;
+      padding: 40px 48px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #777;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        padding: 80px 24px 60px;
+        text-align: center;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .hero-content {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">YOUR COMPANY</div>
+    <nav>
+      <a href="#">Accueil</a>
+      <a href="#">Services</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Solutions professionnelles<br> pour votre entreprise</h1>
+      <p>Nous accompagnons les organisations avec des services de conseil, stratégie et développement durable.</p>
+    </div>
+  </section>
+
+  <section class="services">
+    <h2>Nos Services</h2>
+    <div class="grid">
+      <div class="service">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 3h18v2H3zm0 7h18v2H3zm0 7h18v2H3z"/></svg>
+        <h3>Conseil en gestion</h3>
+        <p>Optimisez vos processus et vos performances internes.</p>
+      </div>
+      <div class="service">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14l4-4h12c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/></svg>
+        <h3>Marketing stratégique</h3>
+        <p>Développez votre image et vos parts de marché.</p>
+      </div>
+      <div class="service">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 4v16h18V4H3zm16 14H5V6h14v12z"/></svg>
+        <h3>Consultation financière</h3>
+        <p>Analyse, prévisions et tableaux de bord pour vos finances.</p>
+      </div>
+      <div class="service">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0 0 20V2z"/></svg>
+        <h3>Développement durable</h3>
+        <p>Des solutions responsables pour un impact positif.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 YOUR COMPANY — Tous droits réservés
+  </footer>
+</body>
+</html>

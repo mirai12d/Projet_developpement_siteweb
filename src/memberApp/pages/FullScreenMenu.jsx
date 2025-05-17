@@ -20,7 +20,9 @@ const FullScreenMenu = () => {
     location.pathname.startsWith('/profil') ||
     location.pathname.startsWith('/commande') ||
     location.pathname.startsWith('/reservation') ||
-    location.pathname.startsWith('/estimation');
+    location.pathname.startsWith('/estimation') ||
+    location.pathname.startsWith('/support');
+
 
   const handleEspaceMembreClick = () => {
     navigate(isMemberPage ? '/' : '/dashboard');
@@ -114,7 +116,6 @@ const FullScreenMenu = () => {
               </h4>
               <Link to="/services" onClick={() => setOpen(false)}>Services</Link>
               <Link to="/projects" onClick={() => setOpen(false)}>Projets</Link>
-              <Link to="/tarifs" onClick={() => setOpen(false)}>Tarifs</Link>
             </div>
 
             <div className="menu-column">

@@ -4,6 +4,7 @@ import MemberLayout from '../../layouts/MemberLayout';
 import './DashboardAccueil.css';
 import { motion } from 'framer-motion';
 import Modal from 'react-modal';
+import { Calendar, FileText, Mail, Package, Wrench, Pin } from 'lucide-react';
 
 Modal.setAppElement('#root');
 
@@ -61,11 +62,11 @@ const DashboardAccueil = () => {
           transition={{ delay: 0.3, duration: 0.6 }}
         >
           <div className="dashboard-card" onClick={() => navigate('/reservation')}>
-            <h3>📅 Réserver un service</h3>
+            <h3><Calendar size={18} style={{ marginRight: 8, verticalAlign: 'middle' }} /> Réserver un service</h3>
             <p>Choisissez une date et un service rapidement.</p>
           </div>
           <div className="dashboard-card" onClick={() => navigate('/factures')}>
-            <h3>🧾 Voir mes factures</h3>
+            <h3><FileText size={18} style={{ marginRight: 8, verticalAlign: 'middle' }} /> Voir mes factures</h3>
             <p>Accédez à vos paiements passés et reçus.</p>
           </div>
         </motion.div>
@@ -77,21 +78,21 @@ const DashboardAccueil = () => {
           transition={{ delay: 0.5, duration: 0.6 }}
         >
           <div className="summary-block">
-            <span>📧</span>
+            <Mail size={20} />
             <div>
               <h4>Email</h4>
               <p>{email}</p>
             </div>
           </div>
           <div className="summary-block">
-            <span>📦</span>
+            <Package size={20} />
             <div>
               <h4>Dernière commande</h4>
               <p>Aucune commande récente</p>
             </div>
           </div>
           <div className="summary-block">
-            <span>🛠️</span>
+            <Wrench size={20} />
             <div>
               <h4>Support</h4>
               <p>0 ticket(s) en cours</p>
@@ -105,7 +106,7 @@ const DashboardAccueil = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.6 }}
         >
-          <h2>📌 Mes réservations</h2>
+          <h2><Pin size={20} style={{ marginRight: 8, verticalAlign: 'middle' }} /> Mes réservations</h2>
           {loading ? (
             <p className="loading-text">Chargement des réservations...</p>
           ) : reservations.length === 0 ? (
