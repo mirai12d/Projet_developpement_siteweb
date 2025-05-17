@@ -13,7 +13,7 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   z-index: 999;
   max-width: 95%;
-  flex-wrap: wrap;
+  flex-wrap: nowrap; /* ✅ Force l’horizontalité */
   gap: 10px;
 }
 
@@ -25,15 +25,17 @@
   font-size: 1.3rem;
   border-radius: 12px;
   padding: 12px 20px;
-  margin-right: 10px;
   white-space: nowrap;
 }
 
 /* ===== LIENS & BOUTONS ===== */
 .bottom-links {
   display: flex;
+  flex-direction: row;       /* ✅ Toujours horizontal */
+  align-items: center;
+  justify-content: center;
   gap: 10px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
 .bottom-links a,
@@ -47,6 +49,8 @@
   text-decoration: none;
   cursor: pointer;
   transition: background 0.2s ease;
+  white-space: nowrap;      /* ✅ Empêche de forcer un retour à la ligne */
+  flex: 0 0 auto;            /* ✅ Empêche l'étirement vertical */
 }
 
 .bottom-links a:hover,
@@ -61,29 +65,28 @@
   border-radius: 10px;
 }
 
-/* ===== RESPONSIVE (supprimé : flex-direction column) ===== */
+/* ===== RESPONSIVE (on conserve la ligne droite) ===== */
 @media (max-width: 600px) {
   .bottom-bar {
-    /* ✅ On conserve l'horizontalité */
-    padding: 10px 12px;
+    flex-wrap: nowrap;
     gap: 8px;
+    padding: 10px 12px;
   }
 
   .bottom-logo {
     font-size: 1.1rem;
     padding: 10px 16px;
-    margin-right: 10px;
   }
 
   .bottom-links {
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-wrap: nowrap;
+    gap: 8px;
   }
 
   .bottom-links a,
   .bottom-links button {
-    font-size: 0.9rem;
-    padding: 10px 14px;
-    flex: none;
+    font-size: 0.85rem;
+    padding: 8px 12px;
+    flex: 0 0 auto;
   }
 }
