@@ -17,7 +17,9 @@ const Profil = () => {
   const [ongletActif, setOngletActif] = useState('compte');
 
   const [userInfo, setUserInfo] = useState({
-    nomComplet: `${prenom} ${nom}`,
+    prenom: prenom,
+    nom: nom,
+    username: '',
     email: email
   });
 
@@ -41,7 +43,6 @@ const Profil = () => {
   };
 
   const updateUserInfo = async () => {
-    const [p, n] = userInfo.nomComplet.split(' ');
     try {
       const resp = await fetch('http://localhost:3001/api/user/update-info', {
         method: 'PATCH',
@@ -49,12 +50,18 @@ const Profil = () => {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`,
         },
-        body: JSON.stringify({ prenom: p, nom: n, email: userInfo.email }),
+        body: JSON.stringify({
+          prenom: userInfo.prenom,
+          nom: userInfo.nom,
+          email: userInfo.email,
+          username: userInfo.username
+        }),
       });
+
       if (resp.ok) {
         alert('Informations mises à jour.');
-        localStorage.setItem('userPrenom', p);
-        localStorage.setItem('userNom', n);
+        localStorage.setItem('userPrenom', userInfo.prenom);
+        localStorage.setItem('userNom', userInfo.nom);
         localStorage.setItem('userEmail', userInfo.email);
         window.location.reload();
       } else {
@@ -149,8 +156,16 @@ const Profil = () => {
                     <h2>Mon compte</h2>
                     <p>Gérez vos informations personnelles.</p>
                     <div className="form-group">
-                      <label>Nom complet</label>
-                      <input type="text" name="nomComplet" value={userInfo.nomComplet} onChange={handleUserInfoChange} />
+                      <label>Prénom</label>
+                      <input type="text" name="prenom" value={userInfo.prenom} onChange={handleUserInfoChange} />
+                    </div>
+                    <div className="form-group">
+                      <label>Nom</label>
+                      <input type="text" name="nom" value={userInfo.nom} onChange={handleUserInfoChange} />
+                    </div>
+                    <div className="form-group">
+                      <label>Nom d'utilisateur</label>
+                      <input type="text" name="username" value={userInfo.username} onChange={handleUserInfoChange} />
                     </div>
                     <div className="form-group">
                       <label>Adresse e-mail</label>
