@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom'; // ✅ ajout
+import { useNavigate } from 'react-router-dom';
 import MemberLayout from '../../layouts/MemberLayout';
 import FullCalendar from '@fullcalendar/react';
 import timeGridPlugin from '@fullcalendar/timegrid';
@@ -11,27 +11,8 @@ import 'react-toastify/dist/ReactToastify.css';
 
 Modal.setAppElement('#root');
 
-const customModalStyles = {
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    transform: 'translate(-50%, -50%)',
-    borderRadius: '16px',
-    padding: '40px',
-    width: '100%',
-    maxWidth: '480px',
-    boxShadow: '0 8px 32px rgba(0,0,0,0.25)',
-  },
-  overlay: {
-    backgroundColor: 'rgba(0,0,0,0.4)',
-    zIndex: 9999,
-  },
-};
-
 const Reservation = () => {
-  const navigate = useNavigate(); // ✅ ajout
+  const navigate = useNavigate();
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedSlot, setSelectedSlot] = useState(null);
   const [formData, setFormData] = useState({
@@ -41,35 +22,47 @@ const Reservation = () => {
   });
   const [events, setEvents] = useState([]);
 
-  useEffect(() => {
-    const fetchReservations = async () => {
-      try {
-        const response = await fetch('http://localhost:3001/api/reservations');
-        const data = await response.json();
-        const formatted = data.map(res => ({
-          title: `${res.service} (${res.nom})`,
-          start: res.date,
-        }));
-        setEvents(formatted);
-      } catch (err) {
-        console.error('Erreur chargement réservations', err);
-      }
-    };
+ useEffect(() => {
+  const fetchReservations = async () => {
+    try {
+      const response = await fetch('http://localhost:3001/api/reservations');
+      const data = await response.json();
 
-    fetchReservations();
-  }, []);
+      const currentUserEmail = localStorage.getItem('userEmail'); // 🔑 email connecté
+
+      const formatted = data.map(res => {
+        const isOwner = res.email === currentUserEmail;
+
+        return {
+          title: isOwner
+            ? `${res.service} (${res.nom})`
+            : 'Créneau réservé',
+          start: res.date,
+        };
+      });
+
+      setEvents(formatted);
+    } catch (err) {
+      console.error('Erreur chargement réservations', err);
+    }
+  };
+
+  fetchReservations();
+}, []);
 
   const handleDateClick = (arg) => {
-    const alreadyReserved = events.some(
-      (event) => new Date(event.start).toISOString() === new Date(arg.dateStr).toISOString()
-    );
-    if (alreadyReserved) {
-      toast.error("Ce créneau est déjà réservé.");
-      return;
-    }
-    setSelectedSlot(arg);
-    setModalIsOpen(true);
-  };
+  const alreadyReserved = events.some(
+    (event) => new Date(event.start).toISOString() === new Date(arg.dateStr).toISOString()
+  );
+  if (alreadyReserved) {
+    toast.error("Ce créneau est déjà réservé.");
+    return;
+  }
+
+  setSelectedSlot(arg);
+  setModalIsOpen(true);
+};
+
 
   const closeModal = () => {
     setModalIsOpen(false);
@@ -83,7 +76,6 @@ const Reservation = () => {
 
   const handleConfirm = async () => {
     const heure = new Date(selectedSlot.dateStr).toTimeString().split(':').slice(0, 2).join(':');
-
     try {
       const response = await fetch('http://localhost:3001/api/reservations', {
         method: 'POST',
@@ -123,12 +115,11 @@ const Reservation = () => {
   return (
     <MemberLayout>
       <div className="reservation-container">
-        {/* ✅ BOUTON RETOUR */}
         <button onClick={() => navigate('/dashboard')} className="back-button">
           ← Retour au tableau de bord
         </button>
 
-        <h1>Réservez un créneau avec notre équipe</h1>
+        <h1>Réservez un créneau</h1>
         <p className="subtitle">Choisissez une plage horaire dans le calendrier ci-dessous</p>
 
         <div className="calendar-wrapper">
@@ -142,9 +133,9 @@ const Reservation = () => {
             dateClick={handleDateClick}
             events={events.map(e => ({
               ...e,
-              backgroundColor: '#ccc',
-              borderColor: '#ccc',
-              textColor: '#444',
+              backgroundColor: '#000',
+              borderColor: '#000',
+              textColor: '#fff',
             }))}
             height="auto"
             locale="fr"
@@ -159,8 +150,8 @@ const Reservation = () => {
         <Modal
           isOpen={modalIsOpen}
           onRequestClose={closeModal}
-          style={customModalStyles}
-          contentLabel="Réservation"
+          className="reservation-modal"
+          overlayClassName="reservation-overlay"
         >
           <h2>Confirmer votre réservation</h2>
           <p className="modal-date">{selectedSlot?.dateStr}</p>

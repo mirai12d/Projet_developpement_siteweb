@@ -40,13 +40,18 @@
 
 .btn-principal,
 .btn-secondaire {
-  padding: 14px 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 13px 28px;
   font-size: 1rem;
   font-weight: 500;
+  line-height: 1.2;
   border-radius: 40px;
   text-decoration: none;
   transition: all 0.3s ease;
 }
+
 
 .btn-principal {
   background-color: #111;
