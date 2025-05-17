@@ -53,6 +53,35 @@
       font-weight: 500;
     }
 
+    .burger {
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      cursor: pointer;
+    }
+
+    .burger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background-color: white;
+      border-radius: 1px;
+    }
+
+    .mobile-nav {
+      display: none;
+      flex-direction: column;
+      background: var(--dark);
+      padding: 12px 24px;
+    }
+
+    .mobile-nav a {
+      color: white;
+      text-decoration: none;
+      padding: 10px 0;
+      font-weight: 500;
+    }
+
     .hero {
       position: relative;
       background-image: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c');
@@ -134,14 +163,57 @@
     }
 
     @media (max-width: 768px) {
+      header {
+        flex-direction: row;
+        padding: 20px 24px;
+      }
+
+      nav {
+        display: none;
+      }
+
+      .burger {
+        display: flex;
+      }
+
+      .mobile-nav {
+        display: flex;
+      }
+
       .hero-content h1 {
         font-size: 2rem;
       }
+
+      .hero {
+        padding: 80px 24px 60px;
+        text-align: center;
+      }
+
+      .hero-content {
+        margin: auto;
+      }
+
+      .work-section {
+        padding: 40px 20px;
+      }
+
+      .work-section h2 {
+        text-align: center;
+      }
     }
   </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const burger = document.querySelector('.burger');
+      const mobileNav = document.querySelector('.mobile-nav');
+
+      burger.addEventListener('click', () => {
+        mobileNav.classList.toggle('open');
+      });
+    });
+  </script>
 </head>
 <body>
-
   <header>
     <div class="logo">PORTFOLIO</div>
     <nav>
@@ -149,7 +221,18 @@
       <a href="#">Portfolio</a>
       <a href="#">Contact</a>
     </nav>
+    <div class="burger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
   </header>
+
+  <div class="mobile-nav">
+    <a href="#">About</a>
+    <a href="#">Portfolio</a>
+    <a href="#">Contact</a>
+  </div>
 
   <section class="hero">
     <div class="hero-content">
@@ -162,19 +245,19 @@
     <h2>My Work</h2>
     <div class="work-grid">
       <div class="work-card">
-        <img src="https://images.unsplash.com/photo-1553390774-b4822481c894?q=80&w=1944&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Web Design" />
+        <img src="https://images.unsplash.com/photo-1553390774-b4822481c894?q=80&w=1944" alt="Web Design" />
         <h3>Web Design</h3>
       </div>
       <div class="work-card">
-        <img src="https://images.unsplash.com/photo-1558655146-364adaf1fcc9?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Mobile App" />
+        <img src="https://images.unsplash.com/photo-1558655146-364adaf1fcc9?q=80&w=1964" alt="Mobile App" />
         <h3>Mobile App</h3>
       </div>
       <div class="work-card">
-        <img src="https://plus.unsplash.com/premium_photo-1681810657450-75b6e84d8b1c?q=80&w=1924&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Branding" />
+        <img src="https://plus.unsplash.com/premium_photo-1681810657450-75b6e84d8b1c?q=80&w=1924" alt="Branding" />
         <h3>Branding</h3>
       </div>
       <div class="work-card">
-        <img src="https://images.unsplash.com/photo-1590486803833-1c5dc8ddd4c8?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Photography" />
+        <img src="https://images.unsplash.com/photo-1590486803833-1c5dc8ddd4c8?q=80&w=1974" alt="Photography" />
         <h3>Photography</h3>
       </div>
     </div>

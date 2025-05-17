@@ -55,6 +55,38 @@
       font-size: 0.95rem;
     }
 
+    /* Burger icon */
+    .burger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+
+    .burger span {
+      height: 3px;
+      width: 24px;
+      background-color: #111;
+      border-radius: 2px;
+      display: block;
+    }
+
+    .mobile-nav {
+      display: none;
+      flex-direction: column;
+      gap: 16px;
+      padding: 16px 24px;
+      background: #fff;
+      border-top: 1px solid #eee;
+    }
+
+    .mobile-nav a {
+      font-size: 1rem;
+      color: #111;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
     .hero {
       position: relative;
       height: 100vh;
@@ -145,13 +177,20 @@
 
     @media (max-width: 900px) {
       header {
-        flex-direction: column;
-        gap: 16px;
-        padding: 24px;
+        flex-direction: row;
+        padding: 20px 24px;
       }
 
       nav {
-        gap: 24px;
+        display: none;
+      }
+
+      .burger {
+        display: flex;
+      }
+
+      .mobile-nav {
+        display: flex;
       }
 
       .hero-content h1 {
@@ -163,6 +202,16 @@
       }
     }
   </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const burger = document.querySelector('.burger');
+      const mobileNav = document.querySelector('.mobile-nav');
+
+      burger.addEventListener('click', () => {
+        mobileNav.classList.toggle('open');
+      });
+    });
+  </script>
 </head>
 <body>
   <header>
@@ -173,7 +222,19 @@
       <a href="#">Galerie</a>
       <a href="#">Contact</a>
     </nav>
+    <div class="burger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
   </header>
+
+  <div class="mobile-nav">
+    <a href="#">Accueil</a>
+    <a href="#">À propos</a>
+    <a href="#">Galerie</a>
+    <a href="#">Contact</a>
+  </div>
 
   <section class="hero">
     <div class="hero-content">
