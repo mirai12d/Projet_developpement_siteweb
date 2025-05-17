@@ -155,7 +155,6 @@ const Estimation = () => {
             exit={{ opacity: 0 }}
           >
             <div className="modal-content">
-              <button onClick={() => setModalOpen(false)} className="modal-close">×</button>
               <iframe
                 src={`/demos/${selectedExample}.html`}
                 title="Démo plein écran"
