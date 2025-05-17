@@ -13,8 +13,15 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   z-index: 999;
   max-width: 95%;
-  flex-wrap: nowrap; /* ✅ Force l’horizontalité */
+  flex-wrap: nowrap;
   gap: 10px;
+  overflow-x: auto;        /* ✅ empêche débordement */
+  scrollbar-width: none;   /* Firefox */
+  -ms-overflow-style: none;/* IE/Edge */
+}
+
+.bottom-bar::-webkit-scrollbar {
+  display: none;           /* Chrome/Safari */
 }
 
 /* ===== LOGO À GAUCHE ===== */
@@ -25,15 +32,14 @@
   font-size: 1.3rem;
   border-radius: 12px;
   padding: 12px 20px;
+  margin-right: 10px;
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
 /* ===== LIENS & BOUTONS ===== */
 .bottom-links {
   display: flex;
-  flex-direction: row;       /* ✅ Toujours horizontal */
-  align-items: center;
-  justify-content: center;
   gap: 10px;
   flex-wrap: nowrap;
 }
@@ -49,8 +55,8 @@
   text-decoration: none;
   cursor: pointer;
   transition: background 0.2s ease;
-  white-space: nowrap;      /* ✅ Empêche de forcer un retour à la ligne */
-  flex: 0 0 auto;            /* ✅ Empêche l'étirement vertical */
+  white-space: nowrap;
+  flex: 0 0 auto;
 }
 
 .bottom-links a:hover,
@@ -65,28 +71,19 @@
   border-radius: 10px;
 }
 
-/* ===== RESPONSIVE (on conserve la ligne droite) ===== */
+/* ===== RESPONSIVE (aucun changement d’aspect, juste protection) ===== */
 @media (max-width: 600px) {
   .bottom-bar {
-    flex-wrap: nowrap;
-    gap: 8px;
-    padding: 10px 12px;
-  }
-
-  .bottom-logo {
-    font-size: 1.1rem;
-    padding: 10px 16px;
+    max-width: 100%;
   }
 
   .bottom-links {
-    flex-wrap: nowrap;
-    gap: 8px;
+    overflow-x: auto;
   }
 
   .bottom-links a,
   .bottom-links button {
     font-size: 0.85rem;
     padding: 8px 12px;
-    flex: 0 0 auto;
   }
 }
