@@ -18,7 +18,8 @@ const Signup = () => {
 
   const [errors, setErrors] = useState({});
   const [message, setMessage] = useState('');
-  const [success, setSuccess] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [resendCooldown, setResendCooldown] = useState(0);
 
   const validate = () => {
     const newErrors = {};
@@ -32,6 +33,32 @@ const Signup = () => {
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const startCooldown = () => {
+    setResendCooldown(60);
+    const interval = setInterval(() => {
+      setResendCooldown((prev) => {
+        if (prev <= 1) {
+          clearInterval(interval);
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+  };
+
+  const resendEmail = async () => {
+    try {
+      await fetch(`${API_URL}/api/auth/resend-verification`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: formData.email }),
+      });
+      startCooldown();
+    } catch (error) {
+      console.error("Erreur lors du renvoi de l'email :", error);
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -58,17 +85,14 @@ const Signup = () => {
 
         const result = await response.json();
 
-        if (result && result.id) {
-          setSuccess(true);
-          setMessage('Inscription réussie !');
-          setTimeout(() => navigate('/login'), 1000);
+        if (response.ok) {
+          setModalOpen(true);
+          startCooldown();
         } else {
-          setSuccess(false);
           setMessage(result.message || 'Erreur lors de l’inscription.');
         }
       } catch (error) {
         console.error(error);
-        setSuccess(false);
         setMessage('Erreur serveur. Veuillez réessayer plus tard.');
       }
     }
@@ -104,9 +128,7 @@ const Signup = () => {
 
         <div className="form-footer">
           <button type="submit">Créer un compte</button>
-          {message && (
-            <p className={`message ${success ? 'success' : 'error'}`}>{message}</p>
-          )}
+          {message && <p className="error">{message}</p>}
         </div>
       </form>
 
@@ -116,6 +138,27 @@ const Signup = () => {
           Connectez-vous
         </span>
       </p>
+
+      {modalOpen && (
+        <div className="modal-backdrop">
+          <div className="modal">
+            <h3>Email de vérification envoyé ✅</h3>
+            <p>Un e-mail a été envoyé à <strong>{formData.email}</strong>.</p>
+            <p>Le lien est valide pendant 24h.</p>
+            <button onClick={resendEmail} disabled={resendCooldown > 0}>
+              {resendCooldown > 0
+                ? `Renvoyer l'email (${resendCooldown}s)`
+                : "Renvoyer l'e-mail"}
+            </button>
+            <p style={{ fontSize: '0.85rem', marginTop: '8px' }}>
+              Une fois vérifié, vous pourrez vous connecter.
+            </p>
+            <button style={{ marginTop: '16px' }} onClick={() => navigate('/login')}>
+              Aller à la connexion
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

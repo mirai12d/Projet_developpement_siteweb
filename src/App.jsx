@@ -17,7 +17,7 @@ import About from "./publicSite/pages/About";
 import Contact from './memberApp/pages/Contact';
 import Login from "./publicSite/pages/Login";
 import Signup from "./publicSite/pages/Signup";
-
+import VerifyEmail from './publicSite/pages/VerifyEmail';
 // Composants membres
 import BottomBar from "./memberApp/components/BottomBar";
 import MemberFooter from "./memberApp/components/Footer";
@@ -61,7 +61,8 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-
+        <Route path="/verify-email/:token" element={<VerifyEmail />} />
+        
         {/* Pages membres protégées */}
         <Route path="/reservation" element={<PrivateRoute><Reservation /></PrivateRoute>} />
         <Route path="/estimation" element={<PrivateRoute><Estimation /></PrivateRoute>} />
