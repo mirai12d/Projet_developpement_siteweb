@@ -8,11 +8,13 @@
   border-radius: 20px;
   display: flex;
   align-items: center;
+  justify-content: center;
   padding: 10px 16px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   z-index: 999;
   max-width: 95%;
   flex-wrap: wrap;
+  gap: 10px;
 }
 
 /* ===== LOGO À GAUCHE ===== */
@@ -59,31 +61,29 @@
   border-radius: 10px;
 }
 
-/* ===== RESPONSIVE ===== */
+/* ===== RESPONSIVE (supprimé : flex-direction column) ===== */
 @media (max-width: 600px) {
   .bottom-bar {
-    flex-direction: column;
-    gap: 10px;
-    padding: 12px;
-    border-radius: 16px;
+    /* ✅ On conserve l'horizontalité */
+    padding: 10px 12px;
+    gap: 8px;
   }
 
   .bottom-logo {
     font-size: 1.1rem;
     padding: 10px 16px;
-    margin-right: 0;
+    margin-right: 10px;
   }
 
   .bottom-links {
+    flex-wrap: wrap;
     justify-content: center;
-    width: 100%;
   }
 
   .bottom-links a,
   .bottom-links button {
     font-size: 0.9rem;
-    padding: 10px 12px;
-    flex: 1;
-    text-align: center;
+    padding: 10px 14px;
+    flex: none;
   }
 }
