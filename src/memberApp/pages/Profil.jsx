@@ -28,11 +28,11 @@ const Profil = () => {
     new: ''
   });
 
-  useEffect(() => {
-    if (searchParams.get('settings') === 'true') {
-      setAfficherSettings(true);
-    }
-  }, [location.search]);
+ useEffect(() => {
+  if (searchParams.get('settings') === 'true') {
+    setAfficherSettings(true);
+  }
+}, [location.search, searchParams]);
 
   const handleUserInfoChange = (e) => {
     setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
