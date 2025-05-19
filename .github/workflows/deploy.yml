@@ -1,0 +1,43 @@
+name: Déploiement Ovrkode
+
+on:
+  push:
+    branches:
+      - Online
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🔁 Cloner le repo
+        uses: actions/checkout@v3
+
+      - name: 🏗️ Installer dépendances
+        run: |
+          npm install
+          npm run build
+
+      - name: 🚀 Déployer via SSH
+        uses: appleboy/scp-action@v0.1.4
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_KEY }}
+          port: 2025
+          source: "build/*"
+          target: "/home/ovrkode/projeta/react_build_temp/"
+
+      - name: 🔧 Script de mise à jour sur le VPS
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_KEY }}
+          port: 2025
+          script: |
+            sudo rm -rf /usr/share/nginx/html/*
+            sudo cp -r ~/projeta/react_build_temp/* /usr/share/nginx/html/
+            sudo chown -R www-data:www-data /usr/share/nginx/html
+            rm -rf ~/projeta/react_build_temp
+            echo "✅ Déploiement terminé"
