@@ -21,7 +21,7 @@ jobs:
       - name: 🚀 Vérifier contenu du build
         run: ls -la build/
 
-      - name: 🚀 Envoyer le build vers le bon dossier du VPS
+      - name: 🚀 Envoyer le build vers le VPS (temporaire)
         uses: appleboy/scp-action@v0.1.4
         with:
           host: ${{ secrets.VPS_HOST }}
@@ -29,9 +29,9 @@ jobs:
           key: ${{ secrets.VPS_KEY }}
           port: 2025
           source: "build/*"
-          target: "/home/ovrkode/projeta/react/build/"
+          target: "/home/ovrkode/projeta/react_build_temp/"
 
-      - name: 🔧 Corriger les permissions
+      - name: 🔧 Copier dans le dossier final + permissions
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.VPS_HOST }}
@@ -39,6 +39,8 @@ jobs:
           key: ${{ secrets.VPS_KEY }}
           port: 2025
           script: |
+            sudo rm -rf /home/ovrkode/projeta/react/build/*
+            sudo cp -r /home/ovrkode/projeta/react_build_temp/* /home/ovrkode/projeta/react/build/
             sudo chown -R www-data:www-data /home/ovrkode/projeta/react/build
             sudo chmod -R 755 /home/ovrkode/projeta/react/build
-            echo "✅ Build React déployé dans le dossier monté Docker"
+            echo "✅ Build React déployé dans le dossier Docker"
