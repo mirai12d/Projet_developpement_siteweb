@@ -13,12 +13,15 @@ jobs:
       - name: 🔁 Cloner le repo
         uses: actions/checkout@v3
 
-      - name: 🏗️ Installer dépendances
+      - name: 🏗️ Installer dépendances + build
         run: |
           npm install
           npm run build
 
-      - name: 🚀 Déployer via SSH
+      - name: 🚀 Vérifier contenu du build
+        run: ls -la build/
+
+      - name: 🚀 Envoyer build vers le VPS
         uses: appleboy/scp-action@v0.1.4
         with:
           host: ${{ secrets.VPS_HOST }}
@@ -28,7 +31,7 @@ jobs:
           source: "build/*"
           target: "/home/ovrkode/projeta/react_build_temp/"
 
-      - name: 🔧 Script de mise à jour sur le VPS
+      - name: 🔧 Remplacer ancien build sur le VPS
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.VPS_HOST }}
@@ -40,4 +43,4 @@ jobs:
             sudo cp -r ~/projeta/react_build_temp/* /usr/share/nginx/html/
             sudo chown -R www-data:www-data /usr/share/nginx/html
             rm -rf ~/projeta/react_build_temp
-            echo "✅ Déploiement terminé"
+            echo "✅ Build React mis à jour sur le VPS"
