@@ -3,8 +3,11 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 import './FullScreenMenu.css';
 import { motion, AnimatePresence } from 'framer-motion';
+import LanguageSwitcher from '../../shared/LanguageSwitcher';
+import { useTranslation } from 'react-i18next'; // ✅ i18n
 
 const FullScreenMenu = () => {
+  const { t } = useTranslation(); // ✅ hook
   const [open, setOpen] = useState(false);
   const [showProfile, setShowProfile] = useState(false);
   const profileTimeoutRef = useRef(null);
@@ -22,7 +25,6 @@ const FullScreenMenu = () => {
     location.pathname.startsWith('/reservation') ||
     location.pathname.startsWith('/estimation') ||
     location.pathname.startsWith('/support');
-
 
   const handleEspaceMembreClick = () => {
     navigate(isMemberPage ? '/' : '/dashboard');
@@ -53,19 +55,21 @@ const FullScreenMenu = () => {
         <Link to="/" className="menu-logo">Ovrkode</Link>
         <div className="top-links">
           {!isMemberPage && (
-            <span className="top-link" onClick={() => setOpen(!open)}>Explorer ▾</span>
+            <span className="top-link" onClick={() => setOpen(!open)}>
+              {t('menu.explore')}
+            </span>
           )}
 
           {isAuthenticated && (
             <button className="top-link member-btn" onClick={handleEspaceMembreClick}>
-              {isMemberPage ? 'Quitter l’espace membre' : 'Espace membre'}
+              {isMemberPage ? t('menu.leave_member') : t('menu.member_space')}
             </button>
           )}
 
           {!isAuthenticated && (
             <>
-              <Link to="/login" className="top-link">Connexion</Link>
-              <Link to="/signup" className="top-link">Inscription</Link>
+              <Link to="/login" className="top-link">{t('menu.login')}</Link>
+              <Link to="/signup" className="top-link">{t('menu.signup')}</Link>
             </>
           )}
 
@@ -84,13 +88,15 @@ const FullScreenMenu = () => {
               {showProfile && (
                 <div className="profile-dropdown">
                   <p className="profile-email">{userPrenom} {userNom}</p>
-                  <Link to="/dashboard">Tableau de bord</Link>
-                  <Link to="/profil">Profil</Link>
-                  <button onClick={logout} className="logout-btn">Déconnexion</button>
+                  <Link to="/dashboard">{t('menu.dashboard')}</Link>
+                  <Link to="/profil">{t('menu.profile')}</Link>
+                  <button onClick={logout} className="logout-btn">{t('menu.logout')}</button>
                 </div>
               )}
             </div>
           )}
+
+          <LanguageSwitcher />
         </div>
       </div>
 
@@ -112,10 +118,10 @@ const FullScreenMenu = () => {
                     <path d="M12 2C6.486 2 2 6.487 2 12s4.486 10 10 10 10-4.487 10-10S17.514 2 12 2zm3.707 8.293l-2 5a1 1 0 01-.586.586l-5 2a1 1 0 01-1.303-1.303l2-5a1 1 0 01.586-.586l5-2a1 1 0 011.303 1.303z"/>
                   </svg>
                 </span>
-                Navigation
+                {t('menu.navigation')}
               </h4>
-              <Link to="/services" onClick={() => setOpen(false)}>Services</Link>
-              <Link to="/projects" onClick={() => setOpen(false)}>Projets</Link>
+              <Link to="/services" onClick={() => setOpen(false)}>{t('menu.services')}</Link>
+              <Link to="/projects" onClick={() => setOpen(false)}>{t('menu.projects')}</Link>
             </div>
 
             <div className="menu-column">
@@ -125,10 +131,10 @@ const FullScreenMenu = () => {
                     <path d="M12 2C6.477 2 2 6.476 2 12s4.477 10 10 10 10-4.476 10-10S17.523 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
                   </svg>
                 </span>
-                Informations
+                {t('menu.information')}
               </h4>
-              <Link to="/about" onClick={() => setOpen(false)}>À propos</Link>
-              <Link to="/contact" onClick={() => setOpen(false)}>Contact</Link>
+              <Link to="/about" onClick={() => setOpen(false)}>{t('menu.about')}</Link>
+              <Link to="/contact" onClick={() => setOpen(false)}>{t('menu.contact')}</Link>
             </div>
           </motion.div>
         )}

@@ -1,0 +1,343 @@
+{
+  "home": {
+    "title": "Votre site web professionnel, rapide et sur mesure",
+    "subtitle": "Ovrkode vous accompagne dans la création de sites modernes, performants et adaptés aux petites entreprises.",
+    "services_button": "Voir nos services",
+    "contact_button": "Nous contacter"
+  },
+
+
+
+  "about": {
+    "title": "À propos de Ovrkode",
+    "paragraph1": "Nous sommes deux développeurs passionnés, basés à Montréal. Grâce à notre expérience en React, Symfony, SQL et design web, nous proposons des solutions professionnelles accessibles aux petites entreprises et entrepreneurs.",
+    "paragraph2": "Notre mission : vous offrir un site performant, esthétique et simple à gérer. Nous privilégions la qualité, la transparence et l'efficacité."
+  },
+
+  
+  "login": {
+    "title": "Connexion",
+    "subtitle": "Accédez à votre espace membre personnalisé.",
+    "placeholder_user": "Email ou nom d'utilisateur",
+    "placeholder_password": "Mot de passe",
+    "button": "Se connecter",
+    "fill_fields": "Veuillez remplir tous les champs.",
+    "success": "Connexion réussie !",
+    "invalid_credentials": "Identifiants incorrects.",
+    "error": "Erreur lors de la connexion.",
+    "no_account": "Pas encore de compte ?",
+    "signup_link": "Inscrivez-vous"
+  },
+
+  
+  "projects": {
+    "title": "Nos Réalisations",
+    "intro": "Voici quelques exemples de sites que nous avons conçus pour nos clients ou en démonstration.",
+    "coiffure": {
+      "title": "Coiffure Luxe",
+      "description": "Site vitrine pour un salon de coiffure à Montréal."
+    },
+    "cafe": {
+      "title": "Café Nomade",
+      "description": "Menu en ligne + système de réservation pour un café indépendant."
+    },
+    "autopro": {
+      "title": "AutoPro",
+      "description": "Landing page pour un garage automobile avec formulaire de contact."
+    }
+  },
+
+  
+  "services": {
+    "title": "Nos Services",
+    "website": {
+      "title": "Création de sites vitrine",
+      "description": "Des sites élégants, rapides et optimisés pour votre activité."
+    },
+    "responsive": {
+      "title": "Design responsive",
+      "description": "Une expérience parfaite sur ordinateur, mobile et tablette."
+    },
+    "security": {
+      "title": "Sécurité & maintenance",
+      "description": "Nous assurons les sauvegardes, mises à jour et surveillance."
+    },
+    "seo": {
+      "title": "Référencement (SEO)",
+      "description": "Votre site visible sur Google avec des pratiques SEO modernes."
+    },
+    "ecommerce": {
+      "title": "E-commerce",
+      "description": "Boutiques en ligne performantes, simples à gérer."
+    },
+    "email": {
+      "title": "Email & formulaires",
+      "description": "Formulaires de contact, email pro, prise de RDV intégrée."
+    }
+  },
+
+  
+  "signup": {
+    "title": "Inscription",
+    "button": "Créer un compte",
+    "already_account": "Vous avez déjà un compte ?",
+    "login_link": "Connectez-vous",
+    "genericError": "Erreur lors de l’inscription.",
+    "serverError": "Erreur serveur. Veuillez réessayer plus tard.",
+    "errors": {
+      "username": "Nom d’utilisateur requis",
+      "nom": "Nom requis",
+      "prenom": "Prénom requis",
+      "email": "Email invalide",
+      "motDePasse": "Mot de passe trop court (6 caractères minimum)"
+    },
+    "placeholders": {
+      "username": "Nom d'utilisateur",
+      "nom": "Nom",
+      "prenom": "Prénom",
+      "email": "Adresse email",
+      "motDePasse": "Mot de passe",
+      "telephone": "Téléphone",
+      "entreprise": "Entreprise (facultatif)"
+    },
+    "modal": {
+      "title": "Email de vérification envoyé ✅",
+      "message": "Un e-mail a été envoyé à",
+      "validity": "Le lien est valide pendant 24h.",
+      "resend": "Renvoyer l’e-mail",
+      "note": "Une fois vérifié, vous pourrez vous connecter.",
+      "goto_login": "Aller à la connexion"
+    }
+  },
+
+  
+  "contact": {
+    "title": "Contactez-nous",
+    "fields": {
+      "nom": "Votre nom",
+      "email": "Votre adresse email",
+      "sujet": "Sujet",
+      "message": "Votre message"
+    },
+    "button": "Envoyer",
+    "success": "Message envoyé avec succès !",
+    "error": "Erreur lors de l'envoi.",
+    "network": "Erreur réseau."
+  },
+
+  
+  "dashboard": {
+    "welcome": "Bienvenue",
+    "subtitle": "Retrouvez ici vos services, documents et support en un clin d'œil.",
+    "actions": {
+      "reserve": {
+        "title": "Réserver un service",
+        "description": "Choisissez une date et un service rapidement."
+      },
+      "invoices": {
+        "title": "Voir mes factures",
+        "description": "Accédez à vos paiements passés et reçus."
+      }
+    },
+    "support": {
+      "title": "Support",
+      "status": "0 ticket(s) en cours"
+    },
+    "reservations": {
+      "title": "Mes réservations",
+      "loading": "Chargement des réservations...",
+      "empty": "Aucune réservation trouvée.",
+      "cancel": "Annuler"
+    },
+    "modal": {
+      "title": "Annulation",
+      "confirm": "Voulez-vous annuler cette réservation ?",
+      "back": "Retour",
+      "confirmButton": "Oui, annuler",
+      "error": "Erreur lors de l'annulation."
+    }
+  },
+
+  
+  "estimation": {
+    "backDashboard": "Retour au tableau de bord",
+    "title": "Obtenez une estimation personnalisée",
+    "subtitle": "Choisissez un exemple de site, puis décrivez votre besoin.",
+    "fields": {
+      "nom": "Votre nom",
+      "email": "Votre adresse email",
+      "entreprise": "Nom de votre entreprise (optionnel)",
+      "budget": "Budget estimé",
+      "message": "Décrivez votre besoin en quelques lignes..."
+    },
+    "budgets": {
+      "range1": "500$ – 1000$",
+      "range2": "1000$ – 3000$",
+      "range3": "Plus de 3000$"
+    },
+    "send": "Envoyer la demande",
+    "contactPrompt": "Vous préférez discuter directement ?",
+    "bookNow": "Réservez un appel ou une rencontre ici",
+    "success": "Votre demande d'estimation a été envoyée !",
+    "error": "Erreur lors de l'envoi.",
+    "network": "Erreur réseau.",
+    "chooseModel": "Choisir ce modèle",
+    "back": "Retour",
+    "modelSelected": "Modèle sélectionné.",
+    "examples": {
+      "site_vitrine": {
+        "title": "Site Vitrine – Photographe",
+        "desc": "Un site simple, élégant et responsive pour présenter votre activité."
+      },
+      "ecommerce": {
+        "title": "E-commerce – Mode",
+        "desc": "Une boutique en ligne complète avec paiement intégré."
+      },
+      "portfolio": {
+        "title": "Portfolio – Freelance",
+        "desc": "Un site personnel pour mettre en avant vos projets et compétences."
+      },
+      "corporate": {
+        "title": "Site Corporate – Entreprise",
+        "desc": "Un site professionnel pour votre société avec formulaire de contact et services."
+      }
+    }
+  },
+
+  
+  "menu": {
+    "explore": "Explorer ▾",
+    "member_space": "Espace membre",
+    "leave_member": "Quitter l’espace membre",
+    "login": "Connexion",
+    "signup": "Inscription",
+    "dashboard": "Tableau de bord",
+    "profile": "Profil",
+    "logout": "Déconnexion",
+    "navigation": "Navigation",
+    "information": "Informations",
+    "services": "Services",
+    "projects": "Projets",
+    "about": "À propos",
+    "contact": "Contact"
+  },
+
+  
+  "profile": {
+    "defaultPrenom": "Utilisateur",
+    "defaultEmail": "inconnu@test.com",
+    "back": "Retour au tableau de bord",
+    "title": "Mon profil",
+    "subtitle": "Bienvenue {{prenom}} {{nom}}",
+    "supportTitle": "Support",
+    "supportStatus": "0 ticket(s) ouvert(s)",
+    "settingsTitle": "Paramètres utilisateur",
+    "tabs": {
+      "account": "Mon compte",
+      "security": "Sécurité",
+      "invoices": "Factures",
+      "payments": "Paiements",
+      "support": "Support"
+    },
+    "editInfo": "Gérez vos informations personnelles.",
+    "changePassword": "Modifiez votre mot de passe.",
+    "fields": {
+      "prenom": "Prénom",
+      "nom": "Nom",
+      "username": "Nom d'utilisateur",
+      "email": "Adresse e-mail",
+      "currentPassword": "Mot de passe actuel",
+      "newPassword": "Nouveau mot de passe"
+    },
+    "save": "Enregistrer les modifications",
+    "updatePassword": "Mettre à jour le mot de passe",
+    "noInvoices": "Vous n'avez pas encore de factures disponibles.",
+    "noPayments": "Aucun moyen de paiement enregistré.",
+    "noTickets": "Vous n'avez pas encore ouvert de ticket.",
+    "infoUpdated": "Informations mises à jour.",
+    "updateError": "Erreur lors de la mise à jour.",
+    "passwordUpdated": "Mot de passe mis à jour.",
+    "passwordError": "Erreur lors du changement de mot de passe.",
+    "networkError": "Erreur réseau."
+  },
+
+  
+  "reservation": {
+    "back": "Retour au tableau de bord",
+    "title": "Réservez un créneau",
+    "subtitle": "Choisissez une plage horaire dans le calendrier ci-dessous",
+    "modalTitle": "Confirmer votre réservation",
+    "confirm": "Confirmer",
+    "cancel": "Annuler",
+    "success": "Réservation confirmée pour le {{date}}",
+    "fail": "Échec de la réservation",
+    "serverError": "Erreur serveur",
+    "slotTaken": "Ce créneau est déjà réservé.",
+    "fields": {
+      "nom": "Votre nom",
+      "email": "Votre email",
+      "service": "Service souhaité"
+    }
+  },
+
+  
+  "support": {
+    "back": "Retour au tableau de bord",
+    "title": "Assistance & Support",
+    "subtitle": "Décrivez votre problème ou posez une question, notre équipe vous répondra rapidement.",
+    "fields": {
+      "subject": "Sujet",
+      "message": "Votre message"
+    },
+    "send": "Envoyer la demande",
+    "success": "Demande de support envoyée !",
+    "error": "Erreur lors de l'envoi.",
+    "serverError": "Erreur serveur."
+  },
+
+  
+  "bottom": {
+    "profil": "Profil",
+    "reservation": "Réservation",
+    "estimation": "Estimation",
+    "support": "Support",
+    "settings": "Réglages"
+  },
+
+  
+  "footer": {
+    "rights": "Tous droits réservés.",
+    "links": {
+      "home": "Accueil",
+      "services": "Services",
+      "projects": "Projets",
+      "about": "À propos",
+      "contact": "Contact"
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

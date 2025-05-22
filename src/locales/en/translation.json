@@ -1,0 +1,342 @@
+{
+  "home": {
+    "title": "Your professional, fast and custom-built website",
+    "subtitle": "Ovrkode helps you create modern, high-performance websites tailored for small businesses.",
+    "services_button": "View our services",
+    "contact_button": "Contact us"
+  },
+
+  
+  "about": {
+    "title": "About Ovrkode",
+    "paragraph1": "We are two passionate developers based in Montreal. With experience in React, Symfony, SQL, and web design, we offer professional solutions tailored to small businesses and entrepreneurs.",
+    "paragraph2": "Our mission: to deliver a fast, beautiful, and easy-to-manage website. We focus on quality, transparency, and efficiency."
+  },
+
+  
+  "login": {
+    "title": "Login",
+    "subtitle": "Access your personalized member area.",
+    "placeholder_user": "Email or username",
+    "placeholder_password": "Password",
+    "button": "Log in",
+    "fill_fields": "Please fill in all fields.",
+    "success": "Login successful!",
+    "invalid_credentials": "Invalid credentials.",
+    "error": "Login failed.",
+    "no_account": "No account yet?",
+    "signup_link": "Sign up"
+  },
+
+  
+  "projects": {
+    "title": "Our Projects",
+    "intro": "Here are some examples of websites we've built for clients or as demos.",
+    "coiffure": {
+      "title": "Luxe Hair",
+      "description": "Showcase website for a hair salon in Montreal."
+    },
+    "cafe": {
+      "title": "Nomad Café",
+      "description": "Online menu + booking system for an independent coffee shop."
+    },
+    "autopro": {
+      "title": "AutoPro",
+      "description": "Landing page for a car garage with contact form."
+    }
+  },
+
+  
+  "services": {
+    "title": "Our Services",
+    "website": {
+      "title": "Showcase Website Creation",
+      "description": "Elegant, fast, and optimized websites for your business."
+    },
+    "responsive": {
+      "title": "Responsive Design",
+      "description": "Perfect experience on desktop, mobile, and tablet."
+    },
+    "security": {
+      "title": "Security & Maintenance",
+      "description": "We handle backups, updates, and monitoring."
+    },
+    "seo": {
+      "title": "SEO Optimization",
+      "description": "Get visible on Google with modern SEO practices."
+    },
+    "ecommerce": {
+      "title": "E-commerce",
+      "description": "High-performing, easy-to-manage online stores."
+    },
+    "email": {
+      "title": "Email & Forms",
+      "description": "Contact forms, professional email, and appointment booking."
+    }
+  },
+
+  
+  "signup": {
+    "title": "Sign Up",
+    "button": "Create an account",
+    "already_account": "Already have an account?",
+    "login_link": "Log in",
+    "genericError": "Registration failed.",
+    "serverError": "Server error. Please try again later.",
+    "errors": {
+      "username": "Username is required",
+      "nom": "Last name is required",
+      "prenom": "First name is required",
+      "email": "Invalid email",
+      "motDePasse": "Password too short (minimum 6 characters)"
+    },
+    "placeholders": {
+      "username": "Username",
+      "nom": "Last name",
+      "prenom": "First name",
+      "email": "Email address",
+      "motDePasse": "Password",
+      "telephone": "Phone number",
+      "entreprise": "Company (optional)"
+    },
+    "modal": {
+      "title": "Verification email sent ✅",
+      "message": "An email has been sent to",
+      "validity": "The link is valid for 24 hours.",
+      "resend": "Resend email",
+      "note": "Once verified, you can log in.",
+      "goto_login": "Go to login"
+    }
+  },
+
+  
+  "contact": {
+    "title": "Contact Us",
+    "fields": {
+      "nom": "Your name",
+      "email": "Your email address",
+      "sujet": "Subject",
+      "message": "Your message"
+    },
+    "button": "Send",
+    "success": "Message sent successfully!",
+    "error": "An error occurred while sending.",
+    "network": "Network error."
+  },
+
+  
+  "dashboard": {
+    "welcome": "Welcome",
+    "subtitle": "Find all your services, documents, and support at a glance.",
+    "actions": {
+      "reserve": {
+        "title": "Book a service",
+        "description": "Quickly choose a date and service."
+      },
+      "invoices": {
+        "title": "View my invoices",
+        "description": "Access your past and received payments."
+      }
+    },
+    "support": {
+      "title": "Support",
+      "status": "0 ticket(s) open"
+    },
+    "reservations": {
+      "title": "My Reservations",
+      "loading": "Loading your reservations...",
+      "empty": "No reservations found.",
+      "cancel": "Cancel"
+    },
+    "modal": {
+      "title": "Cancellation",
+      "confirm": "Do you want to cancel this reservation?",
+      "back": "Back",
+      "confirmButton": "Yes, cancel",
+      "error": "An error occurred while cancelling."
+    }
+  },
+
+  
+  "estimation": {
+    "backDashboard": "Back to dashboard",
+    "title": "Get a personalized quote",
+    "subtitle": "Choose an example site and describe your needs.",
+    "fields": {
+      "nom": "Your name",
+      "email": "Your email address",
+      "entreprise": "Your company name (optional)",
+      "budget": "Estimated budget",
+      "message": "Describe your needs in a few lines..."
+    },
+    "budgets": {
+      "range1": "$500 – $1000",
+      "range2": "$1000 – $3000",
+      "range3": "More than $3000"
+    },
+    "send": "Send request",
+    "contactPrompt": "Prefer to talk directly?",
+    "bookNow": "Book a call or meeting here",
+    "success": "Your quote request has been sent!",
+    "error": "Error while sending.",
+    "network": "Network error.",
+    "chooseModel": "Choose this template",
+    "back": "Back",
+    "modelSelected": "Template selected.",
+    "examples": {
+      "site_vitrine": {
+        "title": "Showcase Website – Photographer",
+        "desc": "A simple, elegant and responsive site to present your business."
+      },
+      "ecommerce": {
+        "title": "E-commerce – Fashion",
+        "desc": "A full-featured online store with integrated payment."
+      },
+      "portfolio": {
+        "title": "Portfolio – Freelancer",
+        "desc": "A personal site to showcase your projects and skills."
+      },
+      "corporate": {
+        "title": "Corporate Website – Business",
+        "desc": "A professional website for your company with contact form and services."
+      }
+    }
+  },
+
+  
+  "menu": {
+    "explore": "Explore ▾",
+    "member_space": "Member area",
+    "leave_member": "Leave member area",
+    "login": "Login",
+    "signup": "Sign up",
+    "dashboard": "Dashboard",
+    "profile": "Profile",
+    "logout": "Log out",
+    "navigation": "Navigation",
+    "information": "Information",
+    "services": "Services",
+    "projects": "Projects",
+    "about": "About",
+    "contact": "Contact"
+  },
+
+  
+  "profile": {
+    "defaultPrenom": "User",
+    "defaultEmail": "unknown@test.com",
+    "back": "Back to dashboard",
+    "title": "My profile",
+    "subtitle": "Welcome {{prenom}} {{nom}}",
+    "supportTitle": "Support",
+    "supportStatus": "0 open ticket(s)",
+    "settingsTitle": "User settings",
+    "tabs": {
+      "account": "My account",
+      "security": "Security",
+      "invoices": "Invoices",
+      "payments": "Payments",
+      "support": "Support"
+    },
+    "editInfo": "Manage your personal information.",
+    "changePassword": "Change your password.",
+    "fields": {
+      "prenom": "First name",
+      "nom": "Last name",
+      "username": "Username",
+      "email": "Email address",
+      "currentPassword": "Current password",
+      "newPassword": "New password"
+    },
+    "save": "Save changes",
+    "updatePassword": "Update password",
+    "noInvoices": "You don't have any invoices yet.",
+    "noPayments": "No saved payment method.",
+    "noTickets": "You haven't opened any support ticket yet.",
+    "infoUpdated": "Information updated successfully.",
+    "updateError": "Error while updating information.",
+    "passwordUpdated": "Password updated successfully.",
+    "passwordError": "Error while changing password.",
+    "networkError": "Network error."
+  },
+
+  
+  "reservation": {
+    "back": "Back to dashboard",
+    "title": "Book a time slot",
+    "subtitle": "Choose a time in the calendar below",
+    "modalTitle": "Confirm your reservation",
+    "confirm": "Confirm",
+    "cancel": "Cancel",
+    "success": "Reservation confirmed for {{date}}",
+    "fail": "Reservation failed",
+    "serverError": "Server error",
+    "slotTaken": "This time slot is already booked.",
+    "fields": {
+      "nom": "Your name",
+      "email": "Your email",
+      "service": "Requested service"
+    }
+  },
+
+  
+  "support": {
+    "back": "Back to dashboard",
+    "title": "Support & Assistance",
+    "subtitle": "Describe your issue or ask a question — our team will respond quickly.",
+    "fields": {
+      "subject": "Subject",
+      "message": "Your message"
+    },
+    "send": "Submit request",
+    "success": "Support request sent!",
+    "error": "Failed to send.",
+    "serverError": "Server error."
+  },
+
+  
+  "bottom": {
+    "profil": "Profile",
+    "reservation": "Booking",
+    "estimation": "Estimate",
+    "support": "Support",
+    "settings": "Settings"
+  },
+
+  
+  "footer": {
+    "rights": "All rights reserved.",
+    "links": {
+      "home": "Home",
+      "services": "Services",
+      "projects": "Projects",
+      "about": "About",
+      "contact": "Contact"
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

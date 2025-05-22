@@ -2,10 +2,13 @@ import React, { useState, useContext } from 'react';
 import './Login.css';
 import { AuthContext } from '../../context/AuthContext';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next'; // ✅ Import i18n
 
 const API_URL = process.env.REACT_APP_API_URL || '';
 
 const Login = () => {
+  const { t } = useTranslation(); // ✅ Hook i18n
+
   const [identifiant, setIdentifiant] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
@@ -19,7 +22,7 @@ const Login = () => {
     e.preventDefault();
 
     if (!identifiant || !password) {
-      setMessage("Veuillez remplir tous les champs.");
+      setMessage(t('login.fill_fields'));
       setSuccess(false);
       return;
     }
@@ -41,18 +44,18 @@ const Login = () => {
 
         login();
         setSuccess(true);
-        setMessage("Connexion réussie !");
+        setMessage(t('login.success'));
         setTimeout(() => {
           navigate(location.state?.from || '/');
         }, 1000);
       } else {
         setSuccess(false);
-        setMessage(result.message || "Identifiants incorrects.");
+        setMessage(result.message || t('login.invalid_credentials'));
       }
     } catch (error) {
       console.error(error);
       setSuccess(false);
-      setMessage("Erreur lors de la connexion.");
+      setMessage(t('login.error'));
     }
   };
 
@@ -64,27 +67,27 @@ const Login = () => {
         </svg>
       </div>
 
-      <h2 className="auth-title">Connexion</h2>
-      <p className="auth-subtitle">Accédez à votre espace membre personnalisé.</p>
+      <h2 className="auth-title">{t('login.title')}</h2>
+      <p className="auth-subtitle">{t('login.subtitle')}</p>
 
       <form onSubmit={handleLogin}>
         <input
           type="text"
-          placeholder="Email ou nom d'utilisateur"
+          placeholder={t('login.placeholder_user')}
           value={identifiant}
           onChange={(e) => setIdentifiant(e.target.value)}
           required
         />
         <input
           type="password"
-          placeholder="Mot de passe"
+          placeholder={t('login.placeholder_password')}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
 
         <div className="form-footer">
-          <button type="submit">Se connecter</button>
+          <button type="submit">{t('login.button')}</button>
           {message && (
             <p className={`message ${success ? 'success' : 'error'}`}>{message}</p>
           )}
@@ -92,9 +95,9 @@ const Login = () => {
       </form>
 
       <p className="switch-auth">
-        Pas encore de compte ?{' '}
+        {t('login.no_account')}{" "}
         <span className="link" onClick={() => navigate('/signup')}>
-          Inscrivez-vous
+          {t('login.signup_link')}
         </span>
       </p>
     </div>

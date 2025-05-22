@@ -1,57 +1,60 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next'; // ✅ Import i18n
 import './Services.css';
 
-const services = [
-  {
-    icon: '/icons/website.svg',
-    title: 'Création de sites vitrine',
-    description: 'Des sites élégants, rapides et optimisés pour votre activité.',
-  },
-  {
-    icon: '/icons/responsive.svg',
-    title: 'Design responsive',
-    description: 'Une expérience parfaite sur ordinateur, mobile et tablette.',
-  },
-  {
-    icon: '/icons/security.svg',
-    title: 'Sécurité & maintenance',
-    description: 'Nous assurons les sauvegardes, mises à jour et surveillance.',
-  },
-  {
-    icon: '/icons/seo.svg',
-    title: 'Référencement (SEO)',
-    description: 'Votre site visible sur Google avec des pratiques SEO modernes.',
-  },
-  {
-    icon: '/icons/ecommerce.svg',
-    title: 'E-commerce',
-    description: 'Boutiques en ligne performantes, simples à gérer.',
-  },
-  {
-    icon: '/icons/email.svg',
-    title: 'Email & formulaires',
-    description: 'Formulaires de contact, email pro, prise de RDV intégrée.',
-  },
-];
-
-const cardVariants = {
-  hidden: { opacity: 0, x: 100 },
-  visible: (i) => ({
-    opacity: 1,
-    x: 0,
-    transition: {
-      delay: i * 0.15,
-      duration: 0.6,
-      ease: 'easeOut',
-    },
-  }),
-};
-
 const Services = () => {
+  const { t } = useTranslation(); // ✅ Hook i18n
+
+  const services = [
+    {
+      icon: '/icons/website.svg',
+      title: t('services.website.title'),
+      description: t('services.website.description'),
+    },
+    {
+      icon: '/icons/responsive.svg',
+      title: t('services.responsive.title'),
+      description: t('services.responsive.description'),
+    },
+    {
+      icon: '/icons/security.svg',
+      title: t('services.security.title'),
+      description: t('services.security.description'),
+    },
+    {
+      icon: '/icons/seo.svg',
+      title: t('services.seo.title'),
+      description: t('services.seo.description'),
+    },
+    {
+      icon: '/icons/ecommerce.svg',
+      title: t('services.ecommerce.title'),
+      description: t('services.ecommerce.description'),
+    },
+    {
+      icon: '/icons/email.svg',
+      title: t('services.email.title'),
+      description: t('services.email.description'),
+    },
+  ];
+
+  const cardVariants = {
+    hidden: { opacity: 0, x: 100 },
+    visible: (i) => ({
+      opacity: 1,
+      x: 0,
+      transition: {
+        delay: i * 0.15,
+        duration: 0.6,
+        ease: 'easeOut',
+      },
+    }),
+  };
+
   return (
     <section className="services" id="services">
-      <h2>Nos Services</h2>
+      <h2>{t('services.title')}</h2>
       <div className="services-list">
         {services.map((service, index) => (
           <motion.div

@@ -4,8 +4,10 @@ import './Support.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next'; // ✅ i18n
 
 const Support = () => {
+  const { t } = useTranslation(); // ✅
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -34,13 +36,13 @@ const Support = () => {
       });
 
       if (response.ok) {
-        toast.success('Demande de support envoyée !');
+        toast.success(t('support.success'));
         setFormData({ ...formData, sujet: '', message: '' });
       } else {
-        toast.error("Erreur lors de l'envoi.");
+        toast.error(t('support.error'));
       }
     } catch (error) {
-      toast.error("Erreur serveur.");
+      toast.error(t('support.serverError'));
       console.error(error);
     }
   };
@@ -50,14 +52,12 @@ const Support = () => {
       <div className="support-container">
         <div style={{ textAlign: 'left' }}>
           <button className="back-button" onClick={() => navigate('/dashboard')}>
-            ← Retour au tableau de bord
+            ← {t('support.back')}
           </button>
         </div>
 
-        <h2>Assistance & Support</h2>
-        <p className="support-subtitle">
-          Décrivez votre problème ou posez une question, notre équipe vous répondra rapidement.
-        </p>
+        <h2>{t('support.title')}</h2>
+        <p className="support-subtitle">{t('support.subtitle')}</p>
 
         <form onSubmit={handleSubmit} className="support-form">
           <input type="text" value={formData.nom} disabled />
@@ -65,21 +65,21 @@ const Support = () => {
           <input
             type="text"
             name="sujet"
-            placeholder="Sujet"
+            placeholder={t('support.fields.subject')}
             value={formData.sujet}
             onChange={handleChange}
             required
           />
           <textarea
             name="message"
-            placeholder="Votre message"
+            placeholder={t('support.fields.message')}
             rows="6"
             value={formData.message}
             onChange={handleChange}
             required
           ></textarea>
 
-          <button type="submit">Envoyer la demande</button>
+          <button type="submit">{t('support.send')}</button>
         </form>
 
         <ToastContainer position="bottom-right" autoClose={3000} />

@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import './Contact.css';
+import { useTranslation } from 'react-i18next'; // ✅ Import i18n
 
 const Contact = () => {
+  const { t } = useTranslation(); // ✅ Hook i18n
+
   const [formData, setFormData] = useState({
     nom: '',
     email: '',
@@ -17,8 +20,7 @@ const Contact = () => {
     e.preventDefault();
 
     try {
-    const response = await fetch('http://localhost:3001/api/contact', {
-
+      const response = await fetch('http://localhost:3001/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -27,25 +29,25 @@ const Contact = () => {
       });
 
       if (response.ok) {
-        alert('Message envoyé avec succès !');
+        alert(t('contact.success'));
         setFormData({ nom: '', email: '', sujet: '', message: '' });
       } else {
-        alert("Erreur lors de l'envoi.");
+        alert(t('contact.error'));
       }
     } catch (error) {
       console.error('Erreur réseau :', error);
-      alert("Erreur réseau.");
+      alert(t('contact.network'));
     }
   };
 
   return (
     <section className="contact" id="contact">
-      <h2>Contactez-nous</h2>
+      <h2>{t('contact.title')}</h2>
       <form className="contact-form" onSubmit={handleSubmit}>
         <input
           type="text"
           name="nom"
-          placeholder="Votre nom"
+          placeholder={t('contact.fields.nom')}
           value={formData.nom}
           onChange={handleChange}
           required
@@ -53,7 +55,7 @@ const Contact = () => {
         <input
           type="email"
           name="email"
-          placeholder="Votre adresse email"
+          placeholder={t('contact.fields.email')}
           value={formData.email}
           onChange={handleChange}
           required
@@ -61,7 +63,7 @@ const Contact = () => {
         <input
           type="text"
           name="sujet"
-          placeholder="Sujet"
+          placeholder={t('contact.fields.sujet')}
           value={formData.sujet}
           onChange={handleChange}
           required
@@ -69,12 +71,12 @@ const Contact = () => {
         <textarea
           name="message"
           rows="5"
-          placeholder="Votre message"
+          placeholder={t('contact.fields.message')}
           value={formData.message}
           onChange={handleChange}
           required
         ></textarea>
-        <button type="submit">Envoyer</button>
+        <button type="submit">{t('contact.button')}</button>
       </form>
     </section>
   );

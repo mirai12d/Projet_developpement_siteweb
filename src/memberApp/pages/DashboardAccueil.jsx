@@ -5,10 +5,12 @@ import './DashboardAccueil.css';
 import { motion } from 'framer-motion';
 import Modal from 'react-modal';
 import { Calendar, FileText, Mail, Wrench, Pin } from 'lucide-react';
+import { useTranslation } from 'react-i18next'; // ✅ i18n
 
 Modal.setAppElement('#root');
 
 const DashboardAccueil = () => {
+  const { t } = useTranslation(); // ✅ hook i18n
   const prenom = localStorage.getItem('userPrenom');
   const nom = localStorage.getItem('userNom');
   const email = localStorage.getItem('userEmail');
@@ -43,7 +45,7 @@ const DashboardAccueil = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          Bienvenue, {prenom} {nom}
+          {t('dashboard.welcome')}, {prenom} {nom}
         </motion.h1>
 
         <motion.p
@@ -52,7 +54,7 @@ const DashboardAccueil = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.6 }}
         >
-          Retrouvez ici vos services, documents et support en un clin d'œil.
+          {t('dashboard.subtitle')}
         </motion.p>
 
         <motion.div
@@ -62,12 +64,12 @@ const DashboardAccueil = () => {
           transition={{ delay: 0.3, duration: 0.6 }}
         >
           <div className="dashboard-card" onClick={() => navigate('/reservation')}>
-            <h3><Calendar size={18} style={{ marginRight: 8, verticalAlign: 'middle' }} /> Réserver un service</h3>
-            <p>Choisissez une date et un service rapidement.</p>
+            <h3><Calendar size={18} style={{ marginRight: 8, verticalAlign: 'middle' }} /> {t('dashboard.actions.reserve.title')}</h3>
+            <p>{t('dashboard.actions.reserve.description')}</p>
           </div>
           <div className="dashboard-card" onClick={() => navigate('/factures')}>
-            <h3><FileText size={18} style={{ marginRight: 8, verticalAlign: 'middle' }} /> Voir mes factures</h3>
-            <p>Accédez à vos paiements passés et reçus.</p>
+            <h3><FileText size={18} style={{ marginRight: 8, verticalAlign: 'middle' }} /> {t('dashboard.actions.invoices.title')}</h3>
+            <p>{t('dashboard.actions.invoices.description')}</p>
           </div>
         </motion.div>
 
@@ -87,8 +89,8 @@ const DashboardAccueil = () => {
           <div className="summary-block">
             <Wrench size={20} />
             <div>
-              <h4>Support</h4>
-              <p>0 ticket(s) en cours</p>
+              <h4>{t('dashboard.support.title')}</h4>
+              <p>{t('dashboard.support.status')}</p>
             </div>
           </div>
         </motion.div>
@@ -99,11 +101,11 @@ const DashboardAccueil = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.6 }}
         >
-          <h2><Pin size={20} style={{ marginRight: 8, verticalAlign: 'middle' }} /> Mes réservations</h2>
+          <h2><Pin size={20} style={{ marginRight: 8, verticalAlign: 'middle' }} /> {t('dashboard.reservations.title')}</h2>
           {loading ? (
-            <p className="loading-text">Chargement des réservations...</p>
+            <p className="loading-text">{t('dashboard.reservations.loading')}</p>
           ) : reservations.length === 0 ? (
-            <p className="empty-text">Aucune réservation trouvée.</p>
+            <p className="empty-text">{t('dashboard.reservations.empty')}</p>
           ) : (
             <div className="reservation-list">
               {reservations.map((r, i) => (
@@ -122,7 +124,7 @@ const DashboardAccueil = () => {
                     className="cancel-button"
                     onClick={() => setModalReservation(r)}
                   >
-                    ✖ Annuler
+                    ✖ {t('dashboard.reservations.cancel')}
                   </button>
                 </motion.div>
               ))}
@@ -136,11 +138,11 @@ const DashboardAccueil = () => {
           className="cancel-modal"
           overlayClassName="cancel-overlay"
         >
-          <h2>Annulation</h2>
-          <p>Voulez-vous annuler cette réservation ?</p>
+          <h2>{t('dashboard.modal.title')}</h2>
+          <p>{t('dashboard.modal.confirm')}</p>
           <div className="modal-actions">
             <button className="btn-cancel" onClick={() => setModalReservation(null)}>
-              Retour
+              {t('dashboard.modal.back')}
             </button>
             <button
               className="btn-confirm"
@@ -153,11 +155,11 @@ const DashboardAccueil = () => {
                   setModalReservation(null);
                 } catch (err) {
                   console.error('Erreur annulation :', err);
-                  alert("Erreur lors de l'annulation.");
+                  alert(t('dashboard.modal.error'));
                 }
               }}
             >
-              Oui, annuler
+              {t('dashboard.modal.confirmButton')}
             </button>
           </div>
         </Modal>

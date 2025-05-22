@@ -8,10 +8,12 @@ import Modal from 'react-modal';
 import './Reservation.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useTranslation } from 'react-i18next'; // ✅ i18n
 
 Modal.setAppElement('#root');
 
 const Reservation = () => {
+  const { t } = useTranslation(); // ✅
   const navigate = useNavigate();
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedSlot, setSelectedSlot] = useState(null);
@@ -22,47 +24,45 @@ const Reservation = () => {
   });
   const [events, setEvents] = useState([]);
 
- useEffect(() => {
-  const fetchReservations = async () => {
-    try {
-      const response = await fetch('http://localhost:3001/api/reservations');
-      const data = await response.json();
+  useEffect(() => {
+    const fetchReservations = async () => {
+      try {
+        const response = await fetch('http://localhost:3001/api/reservations');
+        const data = await response.json();
 
-      const currentUserEmail = localStorage.getItem('userEmail'); // 🔑 email connecté
+        const currentUserEmail = localStorage.getItem('userEmail');
 
-      const formatted = data.map(res => {
-        const isOwner = res.email === currentUserEmail;
+        const formatted = data.map(res => {
+          const isOwner = res.email === currentUserEmail;
+          return {
+            title: isOwner
+              ? `${res.service} (${res.nom})`
+              : t('reservation.slotTaken'),
+            start: res.date,
+          };
+        });
 
-        return {
-          title: isOwner
-            ? `${res.service} (${res.nom})`
-            : 'Créneau réservé',
-          start: res.date,
-        };
-      });
+        setEvents(formatted);
+      } catch (err) {
+        console.error('Erreur chargement réservations', err);
+      }
+    };
 
-      setEvents(formatted);
-    } catch (err) {
-      console.error('Erreur chargement réservations', err);
-    }
-  };
-
-  fetchReservations();
-}, []);
+    fetchReservations();
+  }, [t]);
 
   const handleDateClick = (arg) => {
-  const alreadyReserved = events.some(
-    (event) => new Date(event.start).toISOString() === new Date(arg.dateStr).toISOString()
-  );
-  if (alreadyReserved) {
-    toast.error("Ce créneau est déjà réservé.");
-    return;
-  }
+    const alreadyReserved = events.some(
+      (event) => new Date(event.start).toISOString() === new Date(arg.dateStr).toISOString()
+    );
+    if (alreadyReserved) {
+      toast.error(t('reservation.slotTaken'));
+      return;
+    }
 
-  setSelectedSlot(arg);
-  setModalIsOpen(true);
-};
-
+    setSelectedSlot(arg);
+    setModalIsOpen(true);
+  };
 
   const closeModal = () => {
     setModalIsOpen(false);
@@ -88,18 +88,18 @@ const Reservation = () => {
       });
 
       if (response.ok) {
-        toast.success(`Réservation confirmée pour le ${selectedSlot.dateStr}`);
+        toast.success(t('reservation.success', { date: selectedSlot.dateStr }));
         setEvents(prev => [...prev, {
           title: `${formData.service} (${formData.nom})`,
           start: selectedSlot.dateStr,
         }]);
         closeModal();
       } else {
-        toast.error('Échec de la réservation');
+        toast.error(t('reservation.fail'));
       }
     } catch (err) {
       console.error(err);
-      toast.error('Erreur serveur');
+      toast.error(t('reservation.serverError'));
     }
   };
 
@@ -116,11 +116,11 @@ const Reservation = () => {
     <MemberLayout>
       <div className="reservation-container">
         <button onClick={() => navigate('/dashboard')} className="back-button">
-          ← Retour au tableau de bord
+          ← {t('reservation.back')}
         </button>
 
-        <h1>Réservez un créneau</h1>
-        <p className="subtitle">Choisissez une plage horaire dans le calendrier ci-dessous</p>
+        <h1>{t('reservation.title')}</h1>
+        <p className="subtitle">{t('reservation.subtitle')}</p>
 
         <div className="calendar-wrapper">
           <FullCalendar
@@ -153,14 +153,14 @@ const Reservation = () => {
           className="reservation-modal"
           overlayClassName="reservation-overlay"
         >
-          <h2>Confirmer votre réservation</h2>
+          <h2>{t('reservation.modalTitle')}</h2>
           <p className="modal-date">{selectedSlot?.dateStr}</p>
-          <input type="text" name="nom" placeholder="Votre nom" value={formData.nom} onChange={handleChange} />
-          <input type="email" name="email" placeholder="Votre email" value={formData.email} onChange={handleChange} />
-          <input type="text" name="service" placeholder="Service souhaité" value={formData.service} onChange={handleChange} />
+          <input type="text" name="nom" placeholder={t('reservation.fields.nom')} value={formData.nom} onChange={handleChange} />
+          <input type="email" name="email" placeholder={t('reservation.fields.email')} value={formData.email} onChange={handleChange} />
+          <input type="text" name="service" placeholder={t('reservation.fields.service')} value={formData.service} onChange={handleChange} />
           <div className="modal-actions">
-            <button className="confirm-btn" onClick={handleConfirm}>Confirmer</button>
-            <button className="cancel-btn" onClick={closeModal}>Annuler</button>
+            <button className="confirm-btn" onClick={handleConfirm}>{t('reservation.confirm')}</button>
+            <button className="cancel-btn" onClick={closeModal}>{t('reservation.cancel')}</button>
           </div>
         </Modal>
 

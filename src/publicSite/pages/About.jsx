@@ -1,8 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next'; // ✅ Import i18n
 import './About.css';
 
 const About = () => {
+  const { t } = useTranslation(); // ✅ Hook i18n
+
   return (
     <section className="about" id="about">
       <motion.div
@@ -12,14 +15,9 @@ const About = () => {
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.8, ease: 'easeOut' }}
       >
-        <h2>À propos de Ovrkode</h2>
-        <p>
-          Nous sommes deux développeurs passionnés, basés à Montréal. Grâce à notre expérience en React, Symfony, SQL et design web,
-          nous proposons des solutions professionnelles accessibles aux petites entreprises et entrepreneurs.
-        </p>
-        <p>
-          Notre mission : vous offrir un site performant, esthétique et simple à gérer. Nous privilégions la qualité, la transparence et l'efficacité.
-        </p>
+        <h2>{t('about.title')}</h2>
+        <p>{t('about.paragraph1')}</p>
+        <p>{t('about.paragraph2')}</p>
       </motion.div>
     </section>
   );

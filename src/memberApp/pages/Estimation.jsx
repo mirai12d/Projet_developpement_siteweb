@@ -4,35 +4,37 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next'; // ✅ i18n
 
 const examples = [
   {
     id: 'site_vitrine',
-    title: 'Site Vitrine – Photographe',
-    description: 'Un site simple, élégant et responsive pour présenter votre activité.',
+    titleKey: 'estimation.examples.site_vitrine.title',
+    descKey: 'estimation.examples.site_vitrine.desc',
     image: '/examples/photographe.jpg'
   },
   {
     id: 'ecommerce',
-    title: 'E-commerce – Mode',
-    description: 'Une boutique en ligne complète avec paiement intégré.',
+    titleKey: 'estimation.examples.ecommerce.title',
+    descKey: 'estimation.examples.ecommerce.desc',
     image: '/examples/ecommerce.jpg'
   },
   {
     id: 'portfolio',
-    title: 'Portfolio – Freelance',
-    description: 'Un site personnel pour mettre en avant vos projets et compétences.',
+    titleKey: 'estimation.examples.portfolio.title',
+    descKey: 'estimation.examples.portfolio.desc',
     image: '/examples/portfolio.jpg'
   },
   {
     id: 'corporate',
-    title: 'Site Corporate – Entreprise',
-    description: 'Un site professionnel pour votre société avec formulaire de contact et services.',
+    titleKey: 'estimation.examples.corporate.title',
+    descKey: 'estimation.examples.corporate.desc',
     image: '/examples/corporate.jpg'
   }
 ];
 
 const Estimation = () => {
+  const { t } = useTranslation(); // ✅ hook
   const [selectedExample, setSelectedExample] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
   const navigate = useNavigate();
@@ -68,7 +70,7 @@ const Estimation = () => {
       });
 
       if (response.ok) {
-        toast.success("Votre demande d'estimation a été envoyée !");
+        toast.success(t('estimation.success'));
         setFormData({
           nom: '',
           email: '',
@@ -78,25 +80,24 @@ const Estimation = () => {
         });
         setSelectedExample(null);
       } else {
-        toast.error("Erreur lors de l'envoi.");
+        toast.error(t('estimation.error'));
       }
     } catch (err) {
       console.error('Erreur réseau :', err);
-      toast.error("Erreur réseau.");
+      toast.error(t('estimation.network'));
     }
   };
 
   return (
     <div className="estimation-container">
       <div style={{ textAlign: 'left' }}>
-  <button className="back-button" onClick={() => navigate('/dashboard')}>
-    ← Retour au tableau de bord
-  </button>
-</div>
+        <button className="back-button" onClick={() => navigate('/dashboard')}>
+          ← {t('estimation.backDashboard')}
+        </button>
+      </div>
 
-
-      <h2>Obtenez une estimation personnalisée</h2>
-      <p className="estimation-subtitle">Choisissez un exemple de site, puis décrivez votre besoin.</p>
+      <h2>{t('estimation.title')}</h2>
+      <p className="estimation-subtitle">{t('estimation.subtitle')}</p>
 
       <div className="examples-grid">
         {examples.map(example => (
@@ -110,37 +111,37 @@ const Estimation = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.97 }}
           >
-            <img src={example.image} alt={example.title} />
-            <h3>{example.title}</h3>
-            <p>{example.description}</p>
+            <img src={example.image} alt={t(example.titleKey)} />
+            <h3>{t(example.titleKey)}</h3>
+            <p>{t(example.descKey)}</p>
           </motion.div>
         ))}
       </div>
 
       <form onSubmit={handleSubmit} className="estimation-form">
-        <input type="text" name="nom" placeholder="Votre nom" value={formData.nom} onChange={handleChange} required />
-        <input type="email" name="email" placeholder="Votre adresse email" value={formData.email} onChange={handleChange} required />
-        <input type="text" name="entreprise" placeholder="Nom de votre entreprise (optionnel)" value={formData.entreprise} onChange={handleChange} />
+        <input type="text" name="nom" placeholder={t('estimation.fields.nom')} value={formData.nom} onChange={handleChange} required />
+        <input type="email" name="email" placeholder={t('estimation.fields.email')} value={formData.email} onChange={handleChange} required />
+        <input type="text" name="entreprise" placeholder={t('estimation.fields.entreprise')} value={formData.entreprise} onChange={handleChange} />
         <select name="budget" value={formData.budget} onChange={handleChange}>
-          <option value="">Budget estimé</option>
-          <option value="500-1000">500$ – 1000$</option>
-          <option value="1000-3000">1000$ – 3000$</option>
-          <option value="3000+">Plus de 3000$</option>
+          <option value="">{t('estimation.fields.budget')}</option>
+          <option value="500-1000">{t('estimation.budgets.range1')}</option>
+          <option value="1000-3000">{t('estimation.budgets.range2')}</option>
+          <option value="3000+">{t('estimation.budgets.range3')}</option>
         </select>
         <textarea
           name="message"
-          placeholder="Décrivez votre besoin en quelques lignes..."
+          placeholder={t('estimation.fields.message')}
           rows="6"
           value={formData.message}
           onChange={handleChange}
         ></textarea>
-        <button type="submit">Envoyer la demande</button>
+        <button type="submit">{t('estimation.send')}</button>
       </form>
 
       <p style={{ textAlign: 'center', marginTop: '24px', fontSize: '0.9rem' }}>
-        Vous préférez discuter directement ?&nbsp;
+        {t('estimation.contactPrompt')}&nbsp;
         <Link to="/reservation" style={{ color: '#111', textDecoration: 'underline' }}>
-          Réservez un appel ou une rencontre ici
+          {t('estimation.bookNow')}
         </Link>
       </p>
 
@@ -164,11 +165,11 @@ const Estimation = () => {
                 <button
                   onClick={() => {
                     setModalOpen(false);
-                    toast.success("Modèle sélectionné.");
+                    toast.success(t('estimation.modelSelected'));
                   }}
                   className="explore-button"
                 >
-                  Choisir ce modèle
+                  {t('estimation.chooseModel')}
                 </button>
                 <button
                   onClick={() => {
@@ -178,7 +179,7 @@ const Estimation = () => {
                   className="explore-button"
                   style={{ background: '#555' }}
                 >
-                  Retour
+                  {t('estimation.back')}
                 </button>
               </div>
             </div>

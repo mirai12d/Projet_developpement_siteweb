@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import './Signup.css';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next'; // ✅ Import i18n
 
 const API_URL = process.env.REACT_APP_API_URL || '';
 
 const Signup = () => {
+  const { t } = useTranslation(); // ✅ Hook i18n
   const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     username: '',
     nom: '',
@@ -23,11 +26,11 @@ const Signup = () => {
 
   const validate = () => {
     const newErrors = {};
-    if (!formData.username.trim()) newErrors.username = 'Nom d’utilisateur requis';
-    if (!formData.nom.trim()) newErrors.nom = 'Nom requis';
-    if (!formData.prenom.trim()) newErrors.prenom = 'Prénom requis';
-    if (!formData.email.includes('@')) newErrors.email = 'Email invalide';
-    if (formData.motDePasse.length < 6) newErrors.motDePasse = 'Mot de passe trop court (6 caractères minimum)';
+    if (!formData.username.trim()) newErrors.username = t('signup.errors.username');
+    if (!formData.nom.trim()) newErrors.nom = t('signup.errors.nom');
+    if (!formData.prenom.trim()) newErrors.prenom = t('signup.errors.prenom');
+    if (!formData.email.includes('@')) newErrors.email = t('signup.errors.email');
+    if (formData.motDePasse.length < 6) newErrors.motDePasse = t('signup.errors.motDePasse');
     return newErrors;
   };
 
@@ -89,11 +92,11 @@ const Signup = () => {
           setModalOpen(true);
           startCooldown();
         } else {
-          setMessage(result.message || 'Erreur lors de l’inscription.');
+          setMessage(result.message || t('signup.genericError'));
         }
       } catch (error) {
         console.error(error);
-        setMessage('Erreur serveur. Veuillez réessayer plus tard.');
+        setMessage(t('signup.serverError'));
       }
     }
   };
@@ -106,55 +109,55 @@ const Signup = () => {
         </svg>
       </div>
 
-      <h2>Inscription</h2>
+      <h2>{t('signup.title')}</h2>
       <form onSubmit={handleSubmit} noValidate>
-        <input type="text" name="username" placeholder="Nom d'utilisateur" onChange={handleChange} />
+        <input type="text" name="username" placeholder={t('signup.placeholders.username')} onChange={handleChange} />
         {errors.username && <p className="error">{errors.username}</p>}
 
-        <input type="text" name="nom" placeholder="Nom" onChange={handleChange} />
+        <input type="text" name="nom" placeholder={t('signup.placeholders.nom')} onChange={handleChange} />
         {errors.nom && <p className="error">{errors.nom}</p>}
 
-        <input type="text" name="prenom" placeholder="Prénom" onChange={handleChange} />
+        <input type="text" name="prenom" placeholder={t('signup.placeholders.prenom')} onChange={handleChange} />
         {errors.prenom && <p className="error">{errors.prenom}</p>}
 
-        <input type="email" name="email" placeholder="Adresse email" onChange={handleChange} />
+        <input type="email" name="email" placeholder={t('signup.placeholders.email')} onChange={handleChange} />
         {errors.email && <p className="error">{errors.email}</p>}
 
-        <input type="password" name="motDePasse" placeholder="Mot de passe" onChange={handleChange} />
+        <input type="password" name="motDePasse" placeholder={t('signup.placeholders.motDePasse')} onChange={handleChange} />
         {errors.motDePasse && <p className="error">{errors.motDePasse}</p>}
 
-        <input type="tel" name="telephone" placeholder="Téléphone" onChange={handleChange} />
-        <input type="text" name="entreprise" placeholder="Entreprise (facultatif)" onChange={handleChange} />
+        <input type="tel" name="telephone" placeholder={t('signup.placeholders.telephone')} onChange={handleChange} />
+        <input type="text" name="entreprise" placeholder={t('signup.placeholders.entreprise')} onChange={handleChange} />
 
         <div className="form-footer">
-          <button type="submit">Créer un compte</button>
+          <button type="submit">{t('signup.button')}</button>
           {message && <p className="error">{message}</p>}
         </div>
       </form>
 
       <p className="switch-auth">
-        Vous avez déjà un compte ?{' '}
+        {t('signup.already_account')}{" "}
         <span className="link" onClick={() => navigate('/login')}>
-          Connectez-vous
+          {t('signup.login_link')}
         </span>
       </p>
 
       {modalOpen && (
         <div className="modal-backdrop">
           <div className="modal">
-            <h3>Email de vérification envoyé ✅</h3>
-            <p>Un e-mail a été envoyé à <strong>{formData.email}</strong>.</p>
-            <p>Le lien est valide pendant 24h.</p>
+            <h3>{t('signup.modal.title')}</h3>
+            <p>{t('signup.modal.message')} <strong>{formData.email}</strong>.</p>
+            <p>{t('signup.modal.validity')}</p>
             <button onClick={resendEmail} disabled={resendCooldown > 0}>
               {resendCooldown > 0
-                ? `Renvoyer l'email (${resendCooldown}s)`
-                : "Renvoyer l'e-mail"}
+                ? `${t('signup.modal.resend')} (${resendCooldown}s)`
+                : t('signup.modal.resend')}
             </button>
             <p style={{ fontSize: '0.85rem', marginTop: '8px' }}>
-              Une fois vérifié, vous pourrez vous connecter.
+              {t('signup.modal.note')}
             </p>
             <button style={{ marginTop: '16px' }} onClick={() => navigate('/login')}>
-              Aller à la connexion
+              {t('signup.modal.goto_login')}
             </button>
           </div>
         </div>

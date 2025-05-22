@@ -1,6 +1,7 @@
 import { Routes, Route, useLocation } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "./context/AuthContext";
+import './i18next-config';
 
 // Composants partagés
 import ScrollToTop from './shared/ScrollToTop';
